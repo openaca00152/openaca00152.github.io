@@ -1,1 +1,87 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-7983503652793859"><title>개인 맞춤 사주 리포트 | 나의사주, 나의로또</title><meta name="description" content="양력 생년월일과 정확한 생시를 입력해 연주·월주·일주·시주, 일간, 오행 분포, 십성, 개인 성향을 확인하는 간이 명리 도구입니다."><link rel="canonical" href="https://openaca00152.github.io/tools/saju.html"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#0f172a"><meta property="og:type" content="website"><meta property="og:title" content="개인 맞춤 사주 리포트 | 나의사주, 나의로또"><meta property="og:description" content="양력 생년월일과 정확한 생시를 입력해 연주·월주·일주·시주, 일간, 오행 분포, 십성, 개인 성향을 확인하는 간이 명리 도구입니다."><meta property="og:url" content="https://openaca00152.github.io/tools/saju.html"><meta property="og:image" content="https://openaca00152.github.io/assets/icons/icon-512.png"><link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/icon-192.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/assets/css/style.css"></head><body><a class="skip" href="#main">본문 바로가기</a><header class="site-header"><nav class="nav"><a class="brand" href="/"><img src="/assets/icons/icon.svg" alt=""><span>나의사주, 나의로또</span></a><button class="menu-btn" type="button" aria-label="메뉴 열기">☰</button><div class="nav-links"><a href="/articles/">명리 배우기</a><a href="/tools/saju.html">개인 사주</a><a href="/tools/lotto.html">번호 생성</a><a href="/articles/lotto-odds.html">로또 확률</a><a href="/methodology.html">계산 기준</a><a href="/about.html">소개</a></div></nav></header><main id="main"><div class="tool-wrap"><div class="breadcrumb"><a href="/">홈</a> / 개인 맞춤 사주</div><section class="tool-card"><span class="tag">개인 맞춤 · 브라우저 계산</span><h1>생년월일·생시로 보는 개인 사주 리포트</h1><p class="lead">양력 생년월일과 태어난 시간을 입력하면 네 기둥을 계산하고, 일간을 기준으로 오행·십성·계절 배경을 개인화해 설명합니다. 입력값은 자체 데이터베이스에 저장하지 않습니다.</p><div class="notice info"><strong>계산 범위</strong><br>양력·입력 시각 기준의 간이 명리 계산입니다. 음력 생일은 양력으로 변환해 입력하세요. 절기 경계일, 23시 전후 출생, 출생지 경도 보정이 필요한 경우 전문 만세력과 차이가 날 수 있습니다.</div><div class="form-grid"><div class="field"><label for="birthDate">양력 생년월일</label><input id="birthDate" type="date" min="1900-01-01" max="2099-12-31"></div><div class="field"><label for="birthTime">태어난 시간</label><input id="birthTime" type="time" value="12:00"></div></div><label class="checkline"><input id="unknownTime" type="checkbox"> 태어난 시간을 모릅니다 — 시주 없이 계산</label><button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="showSaju()">개인 맞춤 리포트 보기</button><section id="sajuResult" class="result"><h2>나의 네 기둥</h2><div class="pillars"><div id="pYear" class="pillar"></div><div id="pMonth" class="pillar"></div><div id="pDay" class="pillar"></div><div id="pHour" class="pillar"></div></div><div id="boundaryBox" class="notice warn hide"><strong>경계 출생 주의</strong><br><span id="boundaryText"></span></div><div class="summary-strip"><div class="summary-box"><b>일간 · 나를 읽는 기준점</b><span id="dayMaster"></span></div><div class="summary-box"><b>연주 띠</b><span id="zodiac"></span></div><div class="summary-box"><b>월지 계절 배경</b><span id="season"></span></div></div><h2>표면 오행 분포</h2><p class="muted">천간 4자와 지지 대표 오행을 단순 집계한 첫 번째 관찰입니다. 지장간·강약을 반영한 전문 용신 판정이 아닙니다.</p><div id="elementBars" class="element-list"></div><h2>십성 관계에서 눈에 띄는 언어</h2><div id="godChips" class="ten-gods"></div><h2>개인 맞춤 해석</h2><div class="report-grid"><div class="report-block"><h3>핵심 성향</h3><p id="coreText"></p></div><div class="report-block"><h3>일·학습 방식</h3><p id="workText"></p></div><div class="report-block"><h3>관계·소통</h3><p id="relationText"></p></div><div class="report-block"><h3>재물·자원 관리</h3><p id="moneyText"></p></div><div class="report-block"><h3>계절과 균형</h3><p id="balanceText"></p></div><div class="report-block"><h3 id="annualTitle">올해의 상징적 테마</h3><p id="annualText"></p></div></div><h2>나에게 던져볼 질문</h2><ol id="questions" class="question-list"></ol><div class="actions"><button class="btn btn-outline" onclick="copyReport()">리포트 텍스트 복사</button><a class="btn btn-outline" href="/methodology.html">계산 기준 자세히 보기</a></div><div class="notice"><strong>결과의 성격</strong><br>이 리포트는 미래 사건을 예측하거나 건강·재산·직업·결혼 결과를 보장하지 않습니다. 전통 명리의 상징을 자기관찰 질문으로 바꿔 제공하는 교육·오락 콘텐츠입니다.</div></section></section><section class="article" style="margin-top:22px"><h2>왜 이전 버전보다 결과가 자세한가요?</h2><p>이전 간이 도구는 연주와 오행 테마 중심이었지만, 현재 버전은 양력 생년월일에서 연주·월주·일주를 계산하고 생시가 있으면 시주까지 구성합니다. 일간을 기준으로 천간과 지지 대표 오행의 관계를 십성 언어로 정리해 개인별 설명이 달라집니다.</p><h2>정확한 만세력과 무엇이 다른가요?</h2><p>전문 만세력은 실제 절입 시각, 출생지 경도, 진태양시, 야자시 기준, 지장간과 합충 등 더 많은 조건을 적용할 수 있습니다. 이 도구는 계산 기준을 공개하고 경계 출생에 경고를 표시하는 대신, 확정적인 용신·대운 판정을 자동으로 만들지 않습니다.</p></section></div></main><footer class="footer"><div class="footer-inner"><div><h3>나의사주, 나의로또</h3><p>전통 명리학을 배우고 개인의 생년월일·생시를 바탕으로 간이 명리 리포트를 체험하는 정보 서비스입니다. 운세와 번호는 오락·참고용이며 실제 결과를 보장하지 않습니다.</p><small>© <span data-year></span> 나의사주, 나의로또. All rights reserved.</small></div><div><div class="footer-links"><a href="/articles/">전체 글</a><a href="/methodology.html">계산 기준</a><a href="/editorial.html">콘텐츠 원칙</a><a href="/about.html">서비스 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책 안내</a><a href="/contact.html">문의</a></div></div></div></footer><script src="/assets/js/site.js" defer></script><script src="/assets/js/saju.js?v=20260901-fix1" defer></script></body></html>
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-7983503652793859">
+<title>정밀 만세력 · 개인 사주 리포트 | 나의사주, 나의로또</title>
+<meta name="description" content="양력·음력 생년월일, 생시, 출생지역을 바탕으로 실제 절입 시각을 적용해 사주 원국, 지장간, 십성, 12운성, 합충, 대운과 쉬운 개인 리포트를 제공합니다.">
+<link rel="canonical" href="https://openaca00152.github.io/tools/saju.html"><meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0f172a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="나의사주, 나의로또">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/icon-192.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/assets/css/style.css">
+</head><body>
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="site-header"><nav class="nav"><a class="brand" href="/"><img src="/assets/icons/icon.svg" alt=""><span>나의사주, 나의로또</span></a><button class="menu-btn" type="button" aria-label="메뉴 열기">☰</button><div class="nav-links"><a href="/articles/">명리 배우기</a><a href="/tools/saju.html">정밀 만세력</a><a href="/tools/lotto.html">번호 생성</a><a href="/methodology.html">계산 기준</a><a href="/about.html">소개</a></div></nav></header>
+<main id="main"><div class="tool-wrap"><div class="breadcrumb"><a href="/">홈</a> / 정밀 만세력</div>
+<section class="tool-card">
+<span class="tag">V3 · 실제 절입 시각 · 쉬운 해설</span>
+<h1>정밀 만세력 + 쉬운 개인 리포트</h1>
+<p class="lead">생년월일·생시·출생지역을 입력하면 먼저 이해하기 쉬운 핵심 요약을 보여주고, 아래에서 전문 만세력 항목을 자세히 펼쳐볼 수 있습니다. 입력값은 자체 서버에 저장하지 않습니다.</p>
+<div class="notice info"><strong>정밀 계산 범위</strong><br>1899~2100년의 태양 황경을 천문 역산한 절기 시각 데이터를 사용해 연주·월주 경계를 계산합니다. 음력 변환은 1900~2050년을 지원합니다. 진태양시 보정과 23시 일주 변경은 사용자가 선택할 수 있습니다.</div>
+
+<div class="form-grid v3-grid">
+<div class="field"><label for="calendarType">달력</label><select id="calendarType"><option value="solar">양력</option><option value="lunar">음력</option></select></div>
+<div class="field"><label for="birthDate">생년월일</label><input id="birthDate" type="date" min="1900-01-01" max="2099-12-31"></div>
+<div id="leapWrap" class="field hide"><label>윤달 여부</label><label class="checkline"><input id="leapMonth" type="checkbox"> 윤달입니다</label></div>
+<div class="field"><label for="birthTime">태어난 시간</label><input id="birthTime" type="time" value="12:00"></div>
+<div class="field"><label for="gender">성별 · 대운 방향 계산용</label><select id="gender"><option value="">선택 안 함</option><option value="male">남성</option><option value="female">여성</option></select></div>
+<div class="field"><label for="birthPlace">출생지역</label><select id="birthPlace">
+<option>서울</option><option>부산</option><option>대구</option><option>인천</option><option>광주</option><option>대전</option><option>울산</option><option>세종</option><option>수원</option><option>청주</option><option>전주</option><option selected>군산</option><option>익산</option><option>목포</option><option>여수</option><option>포항</option><option>창원</option><option>제주</option><option>서귀포</option><option>강릉</option><option>춘천</option><option value="custom">직접 입력</option>
+</select></div>
+<div id="customLonWrap" class="field hide"><label for="customLongitude">출생지 경도(동경)</label><input id="customLongitude" type="number" step="0.0001" value="126.7366"></div>
+<div class="field"><label for="timeMode">생시 기준</label><select id="timeMode"><option value="standard">기록된 한국 표준시</option><option value="solar">진태양시 근사 보정</option></select></div>
+<div class="field"><label for="dayBoundary">23시 출생의 일주 기준</label><select id="dayBoundary"><option value="00">자정(00:00)부터 다음 날</option><option value="23">23:00부터 다음 날로 계산</option></select></div>
+</div>
+<label class="checkline"><input id="unknownTime" type="checkbox"> 태어난 시간을 모릅니다 — 시주·시간보정 없이 계산</label>
+<button class="btn btn-dark big-action" type="button" onclick="showSaju()">내 정밀 사주 리포트 보기</button>
+
+<section id="sajuResult" class="result">
+<div class="result-title"><div><span class="tag">먼저 이것만 보세요</span><h2>내 사주 한눈에 보기</h2><p id="inputSummary" class="muted"></p><p id="lunarSummary" class="muted"></p></div><button class="btn btn-outline btn-sm" onclick="copyReport()">전체 결과 복사</button></div>
+<div id="warningBox" class="notice warn hide"><strong>경계 출생 주의</strong><br><span id="warningText"></span></div>
+
+<div class="easy-cards">
+<div class="easy-card"><b>나를 대표하는 기운</b><strong id="easyDay"></strong></div>
+<div class="easy-card"><b>태어난 계절</b><strong id="easySeason"></strong></div>
+<div class="easy-card"><b>기초 균형지표</b><strong id="easyStrength"></strong></div>
+<div class="easy-card"><b>눈에 띄는 십성</b><strong id="easyGod"></strong></div>
+</div>
+<div class="easy-report">
+<h3>① 나는 어떤 기운을 중심으로 보나</h3><p id="easyOne"></p>
+<h3>② 오행 균형은 어떻게 보이나</h3><p id="easyTwo"></p>
+<h3>③ 일·학습·관계에서 눈여겨볼 패턴</h3><p id="easyThree"></p>
+<h3>④ 사주 안의 연결과 충돌</h3><p id="easyFour"></p>
+</div>
+
+<details class="pro-details" open><summary>전문 만세력 자세히 보기</summary>
+<h2>원국 · 연월일시</h2><div id="pillarsPro" class="pillars-pro"></div>
+<div class="grid grid-2 detail-grid">
+<div class="report-block"><h3>절입 기준</h3><p id="termText"></p></div>
+<div class="report-block"><h3>생시 보정</h3><p id="timeCorrection"></p></div>
+</div>
+
+<h2>가중 오행 분포</h2><p class="muted">천간과 지장간을 집계하고 월지를 조금 더 크게 반영한 사이트 내부 참고지표입니다.</p><div id="elementBars" class="element-list"></div>
+<h2>십성 분포</h2><div id="godChips" class="ten-gods"></div>
+<h2>합·충·형·파·해 관계</h2><div id="relationChips" class="relation-list"></div>
+<div class="grid grid-2 detail-grid">
+<div class="report-block"><h3>신강·신약 기초 참고</h3><p id="strengthText"></p></div>
+<div class="report-block"><h3>용신은 자동 확정하지 않습니다</h3><p id="helperText"></p></div>
+</div>
+<h2>대운</h2><div id="luckSection"></div>
+<h2>앞으로 6년 세운 간지</h2><div class="table-wrap"><table><thead><tr><th>연도</th><th>세운</th><th>일간 기준 십성</th><th>상징 언어</th></tr></thead><tbody id="annualRows"></tbody></table></div>
+</details>
+
+<div class="notice"><strong>해석 원칙</strong><br>원국 계산과 절입 시각은 역법·천문 계산 영역이지만, 용신·격국·재물운·배우자운처럼 의미를 붙이는 단계에는 학파와 해석자의 판단이 들어갑니다. 그래서 이 사이트는 미래 사건이나 성공·질병·당첨을 확정하지 않습니다.</div>
+</section>
+</section>
+
+<section class="article" style="margin-top:22px">
+<h2>이전 버전보다 무엇이 달라졌나요?</h2>
+<p>대표 날짜로 절기를 추정하던 방식을 없애고 각 연도의 실제 태양 황경 도달 시각을 사용합니다. 양력·음력 선택, 출생지역, 진태양시 근사 보정, 23시 일주 경계 선택을 추가했습니다.</p>
+<h2>왜 쉬운 결과와 전문 결과를 나눴나요?</h2>
+<p>지장간·십성·12운성·대운은 처음 보는 사람에게 어렵습니다. 그래서 위에서는 ‘나를 대표하는 기운, 계절, 균형, 생활에서 관찰할 패턴’을 먼저 설명하고, 필요할 때 전문 만세력을 펼쳐보도록 설계했습니다.</p>
+<p><a class="btn btn-outline" href="/methodology.html">V3 계산 기준 자세히 보기</a></p>
+</section></div></main>
+
+<footer class="footer"><div class="footer-inner"><div><h3>나의사주, 나의로또</h3><p>전통 명리학을 쉽게 배우고 개인의 생년월일·생시를 바탕으로 만세력과 쉬운 해설을 함께 제공하는 정보 서비스입니다.</p><small>© <span data-year></span> 나의사주, 나의로또. All rights reserved.</small></div><div><div class="footer-links"><a href="/articles/">전체 글</a><a href="/methodology.html">계산 기준</a><a href="/privacy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책 안내</a><a href="/contact.html">문의</a></div></div></div></footer>
+<script src="/assets/js/site.js?v=20260901-v3" defer></script>
+<script src="/assets/data/solar-terms.js?v=20260901-v3" defer></script>
+<script src="/assets/data/korean-lunar.js?v=20260901-v3" defer></script>
+<script src="/assets/js/saju.js?v=20260901-v3" defer></script>
+</body></html>

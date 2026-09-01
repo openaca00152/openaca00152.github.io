@@ -1,9 +1,16 @@
 {
+  "id": "/",
   "name": "나의사주, 나의로또",
   "short_name": "사주로또",
+  "description": "정밀 만세력과 쉬운 개인 사주 해설, 로또 확률 정보를 제공하는 웹앱",
+  "lang": "ko-KR",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
   "background_color": "#f8fafc",
   "theme_color": "#0f172a",
   "icons": [
@@ -18,6 +25,28 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "내 정밀 사주",
+      "url": "/tools/saju.html",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "번호 생성",
+      "url": "/tools/lotto.html",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
