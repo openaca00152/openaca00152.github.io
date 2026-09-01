@@ -1,15 +1,3 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.querySelector('.menu-btn');
-  const nav = document.querySelector('.nav-links');
-  if (btn && nav) btn.addEventListener('click', () => nav.classList.toggle('open'));
-
-  const year = document.querySelector('[data-year]');
-  if (year) year.textContent = new Date().getFullYear();
-});
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
+document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.menu-btn'),n=document.querySelector('.nav-links');if(b&&n)b.addEventListener('click',()=>n.classList.toggle('open'));document.querySelectorAll('[data-year]').forEach(x=>x.textContent=new Date().getFullYear());});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}

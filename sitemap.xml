@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://openaca00152.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/tools/saju.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/tools/lotto.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/methodology.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/editorial.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/privacy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/terms.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://openaca00152.github.io/tools/saju.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://openaca00152.github.io/tools/lotto.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/saju-basics.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/yin-yang.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/five-elements.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -16,6 +19,10 @@
   <url><loc>https://openaca00152.github.io/articles/twelve-branches.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/sixty-gapja.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/birth-time.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/day-master-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/ten-gods.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/solar-terms.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/saju-reading-order.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/wealth-fortune.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/career-fortune.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/relationship-fortune.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -25,5 +32,8 @@
   <url><loc>https://openaca00152.github.io/articles/responsible-lottery.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/lucky-number-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://openaca00152.github.io/articles/privacy-fortune-tools.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://openaca00152.github.io/articles/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/saju-myths.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/calculation-method.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/lottery-randomness.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://openaca00152.github.io/articles/self-reflection.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

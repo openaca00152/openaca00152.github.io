@@ -1,13 +1,15 @@
 https://openaca00152.github.io/
+https://openaca00152.github.io/articles/
+https://openaca00152.github.io/tools/saju.html
+https://openaca00152.github.io/tools/lotto.html
+https://openaca00152.github.io/methodology.html
+https://openaca00152.github.io/editorial.html
 https://openaca00152.github.io/about.html
 https://openaca00152.github.io/privacy.html
 https://openaca00152.github.io/terms.html
 https://openaca00152.github.io/disclaimer.html
 https://openaca00152.github.io/contact.html
 https://openaca00152.github.io/faq.html
-https://openaca00152.github.io/tools/saju.html
-https://openaca00152.github.io/tools/lotto.html
-https://openaca00152.github.io/articles/
 https://openaca00152.github.io/articles/saju-basics.html
 https://openaca00152.github.io/articles/yin-yang.html
 https://openaca00152.github.io/articles/five-elements.html
@@ -15,6 +17,10 @@ https://openaca00152.github.io/articles/ten-stems.html
 https://openaca00152.github.io/articles/twelve-branches.html
 https://openaca00152.github.io/articles/sixty-gapja.html
 https://openaca00152.github.io/articles/birth-time.html
+https://openaca00152.github.io/articles/day-master-guide.html
+https://openaca00152.github.io/articles/ten-gods.html
+https://openaca00152.github.io/articles/solar-terms.html
+https://openaca00152.github.io/articles/saju-reading-order.html
 https://openaca00152.github.io/articles/wealth-fortune.html
 https://openaca00152.github.io/articles/career-fortune.html
 https://openaca00152.github.io/articles/relationship-fortune.html
@@ -24,3 +30,7 @@ https://openaca00152.github.io/articles/random-vs-pattern.html
 https://openaca00152.github.io/articles/responsible-lottery.html
 https://openaca00152.github.io/articles/lucky-number-guide.html
 https://openaca00152.github.io/articles/privacy-fortune-tools.html
+https://openaca00152.github.io/articles/saju-myths.html
+https://openaca00152.github.io/articles/calculation-method.html
+https://openaca00152.github.io/articles/lottery-randomness.html
+https://openaca00152.github.io/articles/self-reflection.html
