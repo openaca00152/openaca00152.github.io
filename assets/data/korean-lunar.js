@@ -61,5 +61,5 @@ function solarToLunar(y,m,d){
  }
  return {y:ly,m:lm,d:dd,leap:inter,iso:`${ly}-${String(lm).padStart(2,'0')}-${String(dd).padStart(2,'0')}${inter?' 윤달':''}`};
 }
-return {lunarToSolar,solarToLunar,leapMonth:function(y){return leapMonth(ld(y))}};
+return {lunarToSolar,solarToLunar,leapMonth:function(y){return leapMonth(ld(y))},lunarDays:function(y,m,leap){return lunarDays(y,m,!!leap)}};
 })();

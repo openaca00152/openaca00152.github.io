@@ -192,6 +192,50 @@ function dominantGod(daySi,ps){
  });
  return Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,3);
 }
+
+const DAY_STYLE={
+ 목:{person:'새로운 방향을 만들고 성장시키려는 성향을 관찰해 볼 수 있습니다. 계획을 세우고 조금씩 키우는 과정에서 강점을 느끼기 쉽습니다.',work:'기획·개선·성장 과제가 있는 일에서 동기부여를 받기 쉽습니다.',study:'큰 흐름을 먼저 이해한 뒤 세부 내용을 연결하는 방식이 잘 맞을 수 있습니다.',relation:'관계를 오래 키우고 발전시키려는 태도를 중요하게 여길 수 있습니다.',money:'단기 승부보다 장기적인 성장과 재투자 관점이 편할 수 있습니다.',caution:'계속 확장하려다 정리와 마무리가 늦어지지 않는지 확인해 보세요.'},
+ 화:{person:'생각이나 감정을 밖으로 표현하고 분위기를 움직이는 힘을 중요하게 여길 수 있습니다.',work:'사람에게 보여주고 전달하고 움직이는 일이 잘 맞을 수 있습니다.',study:'읽기만 하기보다 설명하거나 발표하면서 익히는 방식이 도움이 될 수 있습니다.',relation:'반응이 빠르고 따뜻한 소통을 선호할 수 있습니다.',money:'경험과 활동에 지출이 늘기 쉬우므로 즐거움과 예산의 균형을 확인해 보세요.',caution:'속도가 빨라질수록 충분한 검토 없이 결정하지 않는지 살펴보세요.'},
+ 토:{person:'안정된 기준을 만들고 정리하며 꾸준히 관리하는 성향을 관찰해 볼 수 있습니다.',work:'운영·관리·조정처럼 구조를 유지하고 개선하는 역할에서 강점을 느끼기 쉽습니다.',study:'반복과 정리, 자신만의 노트나 체계를 만드는 방식이 잘 맞을 수 있습니다.',relation:'말보다 신뢰와 지속성을 중요하게 여기는 편인지 살펴볼 수 있습니다.',money:'계획과 관리 중심의 접근이 편할 수 있으며, 안전하다고 느끼는 방식에 오래 머물 수 있습니다.',caution:'안정을 지키려다 변화가 필요한 순간까지 미루지 않는지 확인해 보세요.'},
+ 금:{person:'기준을 세우고 불필요한 것을 정리하며 완성도를 높이는 성향을 관찰해 볼 수 있습니다.',work:'판단·검토·품질관리·분석처럼 기준이 분명한 업무에 잘 집중할 수 있습니다.',study:'틀린 부분을 찾아 고치고 핵심을 압축하는 방식이 잘 맞을 수 있습니다.',relation:'신뢰와 약속, 명확한 경계를 중요하게 여길 수 있습니다.',money:'낭비를 줄이고 효율을 따지는 경향이 있을 수 있습니다.',caution:'기준이 높아져 자신이나 타인에게 지나치게 엄격해지지 않는지 확인해 보세요.'},
+ 수:{person:'흐름을 읽고 정보를 모으며 여러 가능성을 비교하는 성향을 관찰해 볼 수 있습니다.',work:'조사·정보·기획·연결처럼 변화가 있는 환경에서 강점을 느낄 수 있습니다.',study:'다양한 자료를 비교하고 맥락을 이해하는 방식이 잘 맞을 수 있습니다.',relation:'상대의 분위기와 말의 맥락을 세밀하게 읽는 편인지 살펴볼 수 있습니다.',money:'기회를 넓게 보지만 선택을 늦추기 쉬우므로 기준을 정해두는 것이 도움이 될 수 있습니다.',caution:'생각과 정보 수집이 길어져 실행이 늦어지지 않는지 확인해 보세요.'}
+};
+const GOD_STYLE={
+ 비견:{work:'혼자 기준을 세우고 직접 해보는 환경',study:'자기주도 학습',relation:'동등한 관계와 자율성',money:'내가 통제할 수 있는 방식의 관리',strength:'꾸준한 자기주도성',caution:'혼자 해결하려는 습관'},
+ 겁재:{work:'경쟁과 협업이 함께 있는 환경',study:'비교·토론·실전',relation:'에너지 있는 교류',money:'기회 포착과 공동자원',strength:'빠른 대응과 네트워크',caution:'경쟁심이나 충동적 선택'},
+ 식신:{work:'꾸준히 결과물을 만들어내는 일',study:'반복·실습·설명',relation:'편안하고 안정적인 교류',money:'생활 리듬과 안정적 관리',strength:'지속성과 생산성',caution:'편안함에 머무르는 습관'},
+ 상관:{work:'문제를 찾아 개선하거나 새 방식으로 표현하는 일',study:'질문·토론·응용',relation:'솔직하고 빠른 피드백',money:'새로운 아이디어와 기회',strength:'창의적 개선 능력',caution:'표현이 너무 날카로워지는 부분'},
+ 편재:{work:'사람·기회·외부 자원을 연결하는 일',study:'넓게 경험하고 적용하는 방식',relation:'활발하고 넓은 교류',money:'기회와 흐름을 보는 감각',strength:'기회 포착과 확장성',caution:'분산 투자나 즉흥적 소비'},
+ 정재:{work:'예산·일정·자원을 안정적으로 관리하는 일',study:'계획표와 누적 학습',relation:'약속과 책임을 지키는 관계',money:'예산·저축·현금흐름 관리',strength:'현실감각과 지속성',caution:'안전성만 보느라 기회를 지나치는 부분'},
+ 편관:{work:'압박 속에서 기준을 세우고 결단하는 일',study:'목표와 마감이 분명한 방식',relation:'책임과 긴장감이 있는 관계',money:'위험을 통제하는 관리',strength:'결단력과 위기대응',caution:'자기압박과 과도한 긴장'},
+ 정관:{work:'규칙·책임·역할이 분명한 환경',study:'정규 과정과 단계별 학습',relation:'예의와 신뢰가 분명한 관계',money:'계획적이고 규칙적인 관리',strength:'책임감과 안정성',caution:'규칙에 너무 묶이는 부분'},
+ 편인:{work:'전문지식·분석·직관을 활용하는 일',study:'깊게 파고드는 탐구',relation:'깊지만 선택적인 교류',money:'정보를 충분히 확인한 뒤 결정',strength:'전문성·직관·탐구력',caution:'생각이 복잡해져 행동이 늦어지는 부분'},
+ 정인:{work:'배우고 정리하고 지원하는 역할',study:'이론·정리·복습',relation:'돌봄과 신뢰가 있는 관계',money:'안정성과 정보에 기반한 관리',strength:'학습력·정리력·지원능력',caution:'준비만 하다가 시작을 늦추는 부분'}
+};
+function buildPersonalReport(daySi,counts,gods,str,rel){
+ const day=STEMS[daySi],el=day.el,d=DAY_STYLE[el],topGod=gods[0]?.[0]||'비견',g=GOD_STYLE[topGod];
+ const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]),topEl=sorted[0][0],lowEl=sorted.at(-1)[0];
+ const now=new Date().getFullYear(),yi=mod(now-1984,60),yearGod=tenGod(daySi,yi%10);
+ return {
+  personality:`${d.person} ${day.img}에 비유되는 ${day.h}(${day.k}) 일간의 성질을 삶 전체의 정답으로 보지 말고, 실제 자신의 행동과 비교해 보는 것이 좋습니다.`,
+  personalityBasis:`해석 근거: 일간 ${day.h}${day.el} · 강한 오행 ${topEl} · 약한 오행 ${lowEl}`,
+  work:`${d.work} 특히 ${g.work}에서 자신의 장점을 더 쉽게 느낄 수 있는지 관찰해 보세요.`,
+  workBasis:`해석 근거: 일간 ${day.el} + 주요 십성 ${topGod}(${GOD_TEXT[topGod]})`,
+  study:`${d.study} ${g.study}도 잘 맞는지 실제 학습 경험과 비교해 보세요.`,
+  studyBasis:`해석 근거: 일간 ${day.el} + ${topGod}의 학습 상징`,
+  relation:`${d.relation} ${g.relation}을 중요하게 여기는지도 함께 살펴보세요.`,
+  relationBasis:`해석 근거: 일간 ${day.el} + 주요 십성 ${topGod}${rel.length?' + '+rel.slice(0,2).join(', '):''}`,
+  money:`${d.money} ${g.money} 성향이 겹치는지 실제 소비·저축·투자 기록과 비교하는 방식이 가장 현실적입니다.`,
+  moneyBasis:`해석 근거: 일간 ${day.el} + 주요 십성 ${topGod}; 투자수익을 예측하는 해석이 아닙니다.`,
+  strength:`${g.strength}과 ${ELSYMBOL[topEl]} 성향을 의식적으로 활용하면 자신의 강점을 더 분명하게 볼 수 있습니다.`,
+  strengthBasis:`해석 근거: 상대적으로 높은 오행 ${topEl} + ${topGod}`,
+  caution:`${d.caution} 동시에 ${g.caution}도 반복되는지 점검해 보세요. 이것은 약점 판정이 아니라 자기관찰 질문입니다.`,
+  cautionBasis:`해석 근거: 일간 ${day.el}의 과잉 가능성 + 주요 십성 ${topGod}`,
+  year:`${now}년의 천간은 ${STEMS[yi%10].h}이며, 당신의 일간 기준으로는 ${yearGod} 관계입니다. 올해는 “${GOD_TEXT[yearGod]}”이라는 키워드를 자신의 계획과 행동을 점검하는 질문으로 활용해 보세요.`,
+  yearBasis:`해석 근거: ${now}년 ${STEMS[yi%10].h}${BRANCHES[yi%12].h} · 일간 기준 ${yearGod}; 사건을 예언하는 세운 해석이 아닙니다.`
+ };
+}
+
 function easySummary(day,counts,gods,str,rel){
  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]),top=sorted[0][0],low=sorted.at(-1)[0],g=gods[0]?.[0]||'비견';
  return {
@@ -226,18 +270,28 @@ function renderLuck(luck,daySi){
  box.innerHTML=`<div class="notice info"><strong>${dir} · 대운 시작 약 ${ageText(luck.startAge)}</strong><br>기준 절입: ${luck.term.ko} ${formatKoreaTime(luck.term.ms)}. 절입까지의 시간 ÷ 3 규칙을 사용한 근사 시작연령입니다. 학파에 따라 계산법 차이가 있습니다.</div><div class="luck-grid">${cards}</div>`;
 }
 function getInput(){
- const cal=document.getElementById('calendarType').value,date=document.getElementById('birthDate').value;
- if(!date)throw new Error('생년월일을 입력해주세요.');
- let [y,m,d]=date.split('-').map(Number),converted=null,lunarInfo=null;
- if(cal==='lunar'){
-   if(y>2050)throw new Error('음력 변환은 1900~2050년을 지원합니다.');
-   converted=KLunar.lunarToSolar(y,m,d,document.getElementById('leapMonth').checked);
-   if(!converted)throw new Error('유효한 음력 날짜인지, 윤달 선택이 맞는지 확인해주세요.');
-   lunarInfo={y,m,d,leap:document.getElementById('leapMonth').checked}; y=converted.y;m=converted.m;d=converted.d;
- }else if(y<=2050){lunarInfo=KLunar.solarToLunar(y,m,d)}
- const unknown=document.getElementById('unknownTime').checked,[hh,mm]=(unknown?'12:00':document.getElementById('birthTime').value).split(':').map(Number);
- const utcMs=localDateToUtc(y,m,d,hh,mm),place=document.getElementById('birthPlace').value,custom=+document.getElementById('customLongitude').value;
- const lon=place==='custom'?custom:CITIES[place],timeMode=document.getElementById('timeMode').value;
+ const cal=document.getElementById('calendarType').value;
+ let y,m,d,converted=null,lunarInfo=null;
+ if(cal==='solar'){
+   const date=document.getElementById('birthDate').value;
+   if(!date)throw new Error('양력 생년월일을 입력해주세요.');
+   [y,m,d]=date.split('-').map(Number);
+   if(y<=2050)lunarInfo=KLunar.solarToLunar(y,m,d);
+ }else{
+   y=+document.getElementById('lunarYear').value;
+   m=+document.getElementById('lunarMonth').value;
+   d=+document.getElementById('lunarDay').value;
+   const leap=document.getElementById('leapMonth').checked;
+   converted=KLunar.lunarToSolar(y,m,d,leap);
+   if(!converted)throw new Error('선택한 음력 날짜와 윤달 여부를 확인해주세요.');
+   lunarInfo={y,m,d,leap}; y=converted.y;m=converted.m;d=converted.d;
+ }
+ const unknown=document.getElementById('unknownTime').checked;
+ const [hh,mm]=(unknown?'12:00':document.getElementById('birthTime').value).split(':').map(Number);
+ const utcMs=localDateToUtc(y,m,d,hh,mm);
+ const place=document.getElementById('birthPlace').value;
+ const lon=CITIES[place];
+ const timeMode=document.getElementById('timeMode').value;
  let basis={y,m,d,h:hh,min:mm},solar=null;
  if(!unknown&&timeMode==='solar'){solar=trueSolarParts(utcMs,lon);basis=solar}
  return {cal,y,m,d,hh,mm,unknown,utcMs,place,lon,timeMode,basis,solar,lunarInfo,converted,gender:document.getElementById('gender').value,boundary:document.getElementById('dayBoundary').value};
@@ -247,7 +301,7 @@ function showSaju(){
   const x=getInput(),yp=yearPillarByUtc(x.utcMs,x.y),mp=monthPillarByUtc(x.utcMs,yp);
   const dp=dayPillar(x.basis,x.boundary),hp=x.unknown?null:hourPillar(x.basis,dp),ps=[yp,mp,dp,hp];
   const day={stem:STEMS[dp.si],branch:BRANCHES[dp.bi]},counts=weightedElements(ps),gods=dominantGod(dp.si,ps),str=strength(dp.si,counts),rel=findRelations(ps);
-  const easy=easySummary(day,counts,gods,str,rel);
+  const easy=easySummary(day,counts,gods,str,rel),personal=buildPersonalReport(dp.si,counts,gods,str,rel);
 
   document.getElementById('inputSummary').textContent=`양력 ${x.y}-${pad(x.m)}-${pad(x.d)} · ${x.unknown?'생시 모름':pad(x.hh)+':'+pad(x.mm)} · ${x.place}${x.timeMode==='solar'?' · 진태양시 근사 보정':''}`;
   document.getElementById('lunarSummary').textContent=x.lunarInfo?`음력 참고: ${x.lunarInfo.y}-${pad(x.lunarInfo.m)}-${pad(x.lunarInfo.d)}${x.lunarInfo.leap?' 윤달':''}`:'';
@@ -259,6 +313,22 @@ function showSaju(){
   document.getElementById('easySeason').textContent=`${seasonalName(mp.mi)} · ${mp.jie.ko} 이후 ${BRANCHES[mp.bi].k}월`;
   document.getElementById('easyStrength').textContent=`${str.label} · 균형 참고 ${str.helpers.join('·')}`;
   document.getElementById('easyGod').textContent=gods.slice(0,2).map(x=>x[0]).join(' · ');
+  document.getElementById('personalityText').textContent=personal.personality;
+  document.getElementById('personalityBasis').textContent=personal.personalityBasis;
+  document.getElementById('workText').textContent=personal.work;
+  document.getElementById('workBasis').textContent=personal.workBasis;
+  document.getElementById('studyText').textContent=personal.study;
+  document.getElementById('studyBasis').textContent=personal.studyBasis;
+  document.getElementById('relationEasyText').textContent=personal.relation;
+  document.getElementById('relationEasyBasis').textContent=personal.relationBasis;
+  document.getElementById('moneyText').textContent=personal.money;
+  document.getElementById('moneyBasis').textContent=personal.moneyBasis;
+  document.getElementById('strengthEasyText').textContent=personal.strength;
+  document.getElementById('strengthEasyBasis').textContent=personal.strengthBasis;
+  document.getElementById('cautionText').textContent=personal.caution;
+  document.getElementById('cautionBasis').textContent=personal.cautionBasis;
+  document.getElementById('yearThemeText').textContent=personal.year;
+  document.getElementById('yearThemeBasis').textContent=personal.yearBasis;
   document.getElementById('pillarsPro').innerHTML=[
     pillarCard(yp,'연주',dp.si),pillarCard(mp,'월주',dp.si),pillarCard(dp,'일주',dp.si),hp?pillarCard(hp,'시주',dp.si):'<div class="pillar-pro missing"><div class="label">시주</div><div class="hanja">—</div><div class="ko">생시 모름</div></div>'
   ].join('');
@@ -288,9 +358,30 @@ function copyReport(){
  navigator.clipboard.writeText(r.innerText).then(()=>alert('리포트를 복사했습니다.')).catch(()=>alert('복사하지 못했습니다.'));
 }
 document.addEventListener('DOMContentLoaded',()=>{
- const c=document.getElementById('unknownTime'),t=document.getElementById('birthTime'),cal=document.getElementById('calendarType'),
-       leap=document.getElementById('leapWrap'),place=document.getElementById('birthPlace'),custom=document.getElementById('customLonWrap');
+ const c=document.getElementById('unknownTime'),t=document.getElementById('birthTime'),
+       cal=document.getElementById('calendarType'),solarWrap=document.getElementById('solarDateWrap'),
+       lunarWrap=document.getElementById('lunarDateWrap'),ly=document.getElementById('lunarYear'),
+       lm=document.getElementById('lunarMonth'),ld=document.getElementById('lunarDay'),
+       leap=document.getElementById('leapMonth'),help=document.getElementById('lunarLeapHelp');
+
+ for(let y=1900;y<=2050;y++){const o=document.createElement('option');o.value=y;o.textContent=y+'년';ly.appendChild(o)}
+ ly.value=Math.min(new Date().getFullYear(),2050);
+ for(let m=1;m<=12;m++){const o=document.createElement('option');o.value=m;o.textContent=m+'월';lm.appendChild(o)}
+
+ function refreshLunar(){
+   const y=+ly.value,m=+lm.value,lmNo=KLunar.leapMonth(y);
+   leap.disabled=lmNo!==m;
+   if(lmNo!==m)leap.checked=false;
+   help.textContent=lmNo?`${y}년의 윤달은 음력 ${lmNo}월입니다.${lmNo===m?' 현재 월은 윤달 선택이 가능합니다.':''}`:`${y}년에는 윤달이 없습니다.`;
+   const days=KLunar.lunarDays(y,m,leap.checked);
+   const current=+ld.value||1;ld.innerHTML='';
+   for(let d=1;d<=days;d++){const o=document.createElement('option');o.value=d;o.textContent=d+'일';ld.appendChild(o)}
+   ld.value=Math.min(current,days);
+ }
+ refreshLunar();
  c.addEventListener('change',()=>t.disabled=c.checked);
- cal.addEventListener('change',()=>leap.classList.toggle('hide',cal.value!=='lunar'));
- place.addEventListener('change',()=>custom.classList.toggle('hide',place.value!=='custom'));
+ cal.addEventListener('change',()=>{
+   const lunar=cal.value==='lunar';solarWrap.classList.toggle('hide',lunar);lunarWrap.classList.toggle('hide',!lunar);
+ });
+ ly.addEventListener('change',refreshLunar);lm.addEventListener('change',refreshLunar);leap.addEventListener('change',refreshLunar);
 });
