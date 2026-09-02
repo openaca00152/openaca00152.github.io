@@ -337,7 +337,7 @@ function dayBranchRelations(dp,ps){
  ps.filter(Boolean).forEach((p,idx)=>{
    if(idx===2)return;
    const r=pairRelationLabels(dp.bi,p.bi);
-   if(r.length)labels.push(`${['연지','월지','일지','시지'][idx]} ${BRANCHES[p.bi].h}와 ${r.join('·')}`);
+   if(r.length)labels.push(`${['연지','월지','일지','시지'][idx]} ${BRANCHES[p.bi].h}(${BRANCHES[p.bi].k}) · ${r.join('·')}`);
  });
  return labels;
 }
@@ -355,8 +355,8 @@ function yearInfo(daySi,dayBi,year){
  const i=mod(year-1984,60),si=i%10,bi=i%12,g=tenGod(daySi,si),guide=YEAR_GUIDE[g];
  const rel=pairRelationLabels(dayBi,bi);
  let flow=guide.flow;
- if(rel.includes('육합'))flow+=` 특히 일지와 세운 지지가 육합 관계라 가까운 관계나 협력의 접점이 생기는 해로 상징적으로 읽을 수 있습니다.`;
- if(rel.includes('충'))flow+=` 일지와 세운 지지가 충 관계라 생활 패턴이나 관계에서 변화 요구가 커지는 해로 읽을 수 있습니다.`;
+ if(rel.includes('육합'))flow+=` 특히 일지와 그해의 지지가 육합 관계를 이루므로, 가까운 관계나 협력에서 서로 맞춰갈 기회가 늘어나는 흐름으로 참고할 수 있습니다.`;
+ if(rel.includes('충'))flow+=` 일지와 그해의 지지가 충 관계를 이루므로, 생활 방식이나 가까운 관계에서 변화와 조정의 필요가 커질 수 있는 흐름으로 참고합니다.`;
  if(rel.includes('해')||rel.includes('파'))flow+=` 가까운 관계나 약속에서 작은 오해가 커지지 않도록 확인 과정을 두는 편이 좋습니다.`;
  return {year,i,si,bi,g,guide,rel,flow};
 }
@@ -365,8 +365,8 @@ function moneyProfile(daySi,scores,str){
  const text=wealth>=2.2
   ?'재성의 존재감이 비교적 분명합니다. 전통 명리에서는 현실적인 자원, 돈의 흐름, 거래와 관리에 관심이 생기기 쉬운 구조로 봅니다. 돈을 벌 기회 자체보다 “들어온 자원을 어떻게 지키고 배분하느냐”가 실제 결과를 크게 좌우하는 유형으로 읽는 편이 안전합니다.'
   :wealth>=1
-  ?'재성이 적당히 드러납니다. 돈이나 현실 문제를 완전히 멀리하기보다 필요할 때 계산하고 관리하는 감각을 사용할 수 있는 구조입니다. 큰 한 번보다 자신의 주된 일과 꾸준한 관리가 재물 흐름을 안정시키는 방식에 더 가깝습니다.'
-  :'재성이 원국 전면에 강하게 드러나는 편은 아닙니다. 이것이 재물이 없다는 뜻은 아닙니다. 돈 자체를 좇기보다 전문성·직업·표현 같은 다른 강점을 먼저 키우고 그 결과가 수입으로 연결되도록 만드는 방식이 더 자연스러울 수 있습니다.';
+  ?'재성이 적당히 드러납니다. 돈이나 현실 문제를 완전히 멀리하기보다 필요할 때 계산하고 관리하는 감각을 사용할 수 있는 구조입니다. 한 번의 큰 기회만 기다리기보다 자신의 주된 일에서 꾸준히 수입 기반을 만들고 관리하는 방식이 더 잘 맞을 수 있습니다.'
+  :'사주 구성에서 재성이 아주 두드러지는 편은 아닙니다. 이것이 재물이 없다는 뜻은 아닙니다. 돈 자체를 좇기보다 전문성·직업·표현 같은 다른 강점을 먼저 키우고 그 결과가 수입으로 연결되도록 만드는 방식이 더 자연스러울 수 있습니다.';
  return {wealth,text};
 }
 function loveProfile(dp,ps,scores,gender){
@@ -379,7 +379,7 @@ function loveProfile(dp,ps,scores,gender){
   const s=scores.편관+scores.정관;
   spouse=`고전 명리의 여성 명식에서는 관성을 배우자 관련 보조지표로 보기도 하는데, 현재 관성의 상대적 비중은 ${s.toFixed(1)} 정도입니다.`;
  }else{
-  spouse='성별을 선택하지 않았으므로 고전적인 배우자별 성별 규칙은 적용하지 않고 일지와 전체 관계 패턴을 중심으로 봅니다.';
+  spouse='성별을 선택하지 않았으므로 성별에 따라 배우자 상징을 달리 보는 고전적 해석 규칙은 적용하지 않고 일지와 전체 관계 패턴을 중심으로 봅니다.';
  }
  const movement=dr.length?`일지는 다른 지지와 ${dr.join(', ')} 관계가 있어 가까운 관계에서 변화·조율의 주제가 비교적 눈에 띌 수 있습니다.`:'일지가 다른 지지와 강한 충돌 관계를 많이 만들지 않아 가까운 관계에서는 급격한 변화보다 신뢰와 생활 리듬을 맞추는 과정이 중요하게 읽힙니다.';
  return {text:`사주에서 일지는 나 자신과 가장 가까운 생활공간, 배우자·연인 관계를 살펴보는 자리로 많이 사용합니다. ${movement} ${spouse} 다만 이것은 현대의 성별 역할이나 결혼 결과를 정하는 규칙이 아니라 전통 해석 관행을 참고하는 수준입니다.`,basis:dr};
@@ -401,7 +401,7 @@ function careerProfile(groups,gods){
   관성:'조직·책임·관리·공식적인 역할',
   인성:'전문지식·교육·문서·연구·지원'
  };
- return {leader,text:`십성을 다섯 역할군으로 묶어 보면 ${leader} 영역이 상대적으로 눈에 띕니다. 이는 ${map[leader]} 같은 방식에서 자신의 능력을 쓰기 쉽다는 뜻으로 해석할 수 있습니다. 특히 ${topGod}(${GOD_TEXT[topGod]})이 함께 강조되어 실제 직업에서는 ${GOD_STYLE[topGod].work}와 잘 맞는지 살펴볼 가치가 있습니다. 직업명을 하나로 단정하기보다 “어떤 방식으로 일할 때 성과가 나는가”를 보는 것이 더 유용합니다.`};
+ return {leader,text:`십성을 다섯 역할군으로 묶어 보면 “${leader}” 역할군이 상대적으로 두드러집니다. 이 역할군은 ${map[leader]} 같은 능력을 어떻게 사용하는지와 관련해 읽습니다. 주요 십성은 ${topGod}(${GOD_TEXT[topGod]})입니다. 실제 직업에서는 “${GOD_STYLE[topGod].work}” 같은 환경이 자신에게 잘 맞는지 살펴볼 가치가 있습니다. 특정 직업명을 맞히기보다 “어떤 방식으로 일할 때 힘이 나고 성과가 나는가”를 확인하는 편이 더 유용합니다.`};
 }
 function buildPersonalReport(daySi,dp,mp,ps,counts,gods,str,rel,x,luck){
  const day=STEMS[daySi],el=day.el,d=DAY_STYLE[el],topGod=gods[0]?.[0]||'비견',g=GOD_STYLE[topGod];
@@ -413,25 +413,25 @@ function buildPersonalReport(daySi,dp,mp,ps,counts,gods,str,rel,x,luck){
  const currentLuckGod=currentLuck?tenGod(daySi,currentLuck.si):null;
 
  return {
-  personality:`${d.person} ${day.img}에 비유되는 ${day.h}(${day.k}) 일간은 쉽게 말해 “${day.easy}”을 자신의 기본 방식으로 삼는 사람으로 풀이할 수 있습니다. ${d.person2} 현재 오행에서는 ${topEl}이 상대적으로 눈에 띄고 ${lowEl}은 적게 보여, 생각이나 행동이 한쪽으로 치우칠 때는 반대 성향을 의식적으로 써보는 것이 균형에 도움이 됩니다.`,
-  personalityBasis:`왜 이렇게 보나요? 일간 ${day.h}${day.el} · 월지 ${BRANCHES[mp.bi].h}(${seasonalName(mp.mi)}) · 강한 오행 ${topEl} · 약한 오행 ${lowEl}`,
+  personality:`${d.person} ${day.img}에 비유되는 ${day.h}(${day.k}) 일간은 쉽게 말해 “${day.easy}”을 자신의 기본 방식으로 삼는 사람으로 풀이할 수 있습니다. ${d.person2} 현재 오행 분포를 보면 ${topEl} 기운이 상대적으로 두드러지고, ${lowEl} 기운은 비교적 적게 나타납니다. 어느 한쪽이 많거나 적다고 좋고 나쁜 것은 아닙니다. 생각이나 행동이 한 방향으로 치우칠 때 반대되는 성향도 의식적으로 써보는 것이 균형에 도움이 됩니다.`,
+  personalityBasis:`왜 이렇게 보나요? 일간 ${day.h}(${day.k}) · 일간의 오행 ${day.el} · 월지 ${BRANCHES[mp.bi].h}(${BRANCHES[mp.bi].k}) · 태어난 계절 ${seasonalName(mp.mi)} · 상대적으로 많은 오행 ${topEl} · 적은 오행 ${lowEl}`,
   work:`${d.work} ${career.text} 한 가지 직업 이름을 맞히는 식보다, 책임이 분명한 조직형인지, 자유롭게 결과를 만드는 프로젝트형인지, 전문성을 오래 쌓는 연구형인지처럼 자신의 “일하는 방식”을 확인해 보는 것이 더 정확합니다. 지금까지 가장 성과가 좋았던 환경과 비교해 보세요.`,
   workBasis:`해석 근거: 십성 역할군 ${career.leader} 우세 · 주요 십성 ${topGod} · 일간 ${day.el}`,
   study:`${d.study} ${g.study} 방식도 잘 맞을 가능성이 있습니다. 단순히 오래 앉아 있기보다 자신의 일간과 십성에 맞는 학습법을 쓰는 것이 중요합니다. 예를 들어 식상이 강하면 직접 만들어보고 설명하는 방식, 인성이 강하면 이론을 구조화해 복습하는 방식이 더 편할 수 있습니다. 배운 내용을 실제 문제나 업무에 연결했을 때 이해가 깊어지는지 확인해 보세요.`,
   studyBasis:`해석 근거: 일간 ${day.el} · 주요 십성 ${topGod}(${GOD_TEXT[topGod]}) · 인성 ${groups.인성.toFixed(1)} / 식상 ${groups.식상.toFixed(1)}`,
-  relation:`${d.relation} ${g.relation}을 중요하게 느낄 가능성이 있습니다. 가까운 관계에서는 “내 방식대로 해야 마음이 편한지”, “상대에게 맞추다가 속마음을 늦게 말하는지”를 살펴보면 자신의 관계 패턴이 더 잘 보입니다. ${love.basis.length?`원국의 일지에는 ${love.basis.join(', ')} 같은 움직임이 보여 관계에서 조율과 변화가 중요한 주제가 될 수 있습니다.`:'일지 쪽에 강한 충돌 표시는 많지 않아 꾸준한 신뢰와 생활 리듬을 맞추는 과정이 중요하게 읽힙니다.'}`,
+  relation:`${d.relation} 관계에서는 특히 “${g.relation}” 같은 방식을 편하게 느끼는지도 살펴볼 수 있습니다. 가까운 관계에서는 “내 방식대로 해야 마음이 편한지”, “상대에게 맞추다가 속마음을 늦게 말하는지”를 살펴보면 자신의 관계 패턴이 더 잘 보입니다. ${love.basis.length?`원국의 일지에는 ${love.basis.join(', ')} 같은 움직임이 보여 관계에서 조율과 변화가 중요한 주제가 될 수 있습니다.`:'일지 쪽에 강한 충돌 표시는 많지 않아 꾸준한 신뢰와 생활 리듬을 맞추는 과정이 중요하게 읽힙니다.'}`,
   relationBasis:`해석 근거: 일간 ${day.el} · 일지 ${BRANCHES[dp.bi].h} · 주요 십성 ${topGod}${love.basis.length?' · '+love.basis.join(', '):''}`,
   money:`${d.money} ${money.text} ${g.money} 같은 방식이 자신의 실제 돈 관리 습관과 겹치는지도 확인해 보세요. 재물운을 볼 때는 “언제 큰돈이 생기나”보다 수입을 만드는 능력, 지키는 능력, 위험을 관리하는 능력이 어떻게 조합되는지를 보는 편이 현실적입니다. 투자나 복권 당첨 가능성을 이 결과로 판단해서는 안 됩니다.`,
   moneyBasis:`해석 근거: 재성 점수 ${money.wealth.toFixed(1)} · 정재 ${scores.정재.toFixed(1)} / 편재 ${scores.편재.toFixed(1)} · 주요 십성 ${topGod}`,
-  love:`${love.text} 관계운은 ‘언제 결혼한다’보다 어떤 상대에게 편안함을 느끼고 갈등이 생겼을 때 어떻게 반응하는지를 보는 것이 더 도움이 됩니다. ${d.relation} 올해 세운은 ${yi.g}이라 ${YEAR_GUIDE[yi.g].domain}의 주제가 부각되므로 관계에서도 이 키워드가 어떻게 나타나는지 관찰해 보세요.`,
+  love:`${love.text} 관계운은 ‘언제 결혼한다’보다 어떤 상대에게 편안함을 느끼고 갈등이 생겼을 때 어떻게 반응하는지를 보는 것이 더 도움이 됩니다. ${d.relation} 올해 세운의 중심 십성은 ${yi.g}입니다. 따라서 “${YEAR_GUIDE[yi.g].domain}”이라는 주제가 관계에서도 어떤 모습으로 나타나는지 관찰해 보세요.`,
   loveBasis:`해석 근거: 일지 ${BRANCHES[dp.bi].h} · ${love.basis.length?love.basis.join(', '):'강한 일지 충돌 표시 적음'} · 올해 ${yi.g}`,
   health:`${health.text}`,
   healthBasis:`해석 근거: 오행 상위 ${health.high} / 하위 ${health.low}. 전통 오행 대응은 건강 진단이 아니라 상징적 생활 참고입니다.`,
-  strength:`${g.strength}과 ${ELSYMBOL[topEl]} 성향을 함께 활용하면 자신의 장점을 더 분명하게 만들 수 있습니다. 특히 어려운 상황에서 남들이 기대하는 방식보다 실제로 내가 반복해서 잘해온 행동을 찾아보세요. 강점은 사주에 적힌 단어가 아니라 경험 속에서 확인될 때 의미가 있습니다.`,
+  strength:`대표적인 강점 키워드는 “${g.strength}”입니다. 오행 쪽에서는 “${ELSYMBOL[topEl]}” 성향도 눈에 띕니다. 두 특징을 함께 활용하면 자신의 장점을 더 분명하게 만들 수 있습니다. 특히 어려운 상황에서 남들이 기대하는 방식보다 실제로 내가 반복해서 잘해온 행동을 찾아보세요. 강점은 사주에 적힌 단어가 아니라 경험 속에서 확인될 때 의미가 있습니다.`,
   strengthBasis:`해석 근거: 상대적으로 높은 오행 ${topEl} · 주요 십성 ${topGod} · ${career.leader} 역할군`,
   caution:`${d.caution} 동시에 ${g.caution}도 반복되는지 살펴보세요. 강한 기운은 장점으로 쓰일 때 힘이 되지만 과해지면 같은 행동을 너무 오래 반복하게 만들 수 있습니다. 중요한 결정을 앞두고는 나와 반대되는 관점의 사람에게 한 번 의견을 듣는 방식도 균형에 도움이 됩니다.`,
-  cautionBasis:`해석 근거: 일간 ${day.el}의 과잉 가능성 · 주요 십성 ${topGod} · 약한 오행 ${lowEl}`,
-  year:`${now}년은 ${STEMS[yi.si].h}${BRANCHES[yi.bi].h}(${STEMS[yi.si].k}${BRANCHES[yi.bi].k})년이고, 일간 기준으로 ${yi.g}의 역할이 들어옵니다. ${yi.flow} 그래서 올해는 “${yi.guide.domain}”을 핵심 키워드로 두고 계획을 세워보는 것이 좋습니다. ${currentLuckGod?`현재 대운의 중심 십성은 ${currentLuckGod}이라, 10년 흐름의 ${YEAR_GUIDE[currentLuckGod].domain}과 올해의 ${yi.guide.domain}이 함께 작동한다고 읽습니다.`:'성별을 선택하면 현재 대운까지 겹쳐서 더 자세히 볼 수 있습니다.'}`,
+  cautionBasis:`해석 근거: 일간의 오행 ${day.el} · 주요 십성 ${topGod} · 상대적으로 적게 나타나는 오행 ${lowEl}`,
+  year:`${now}년은 ${STEMS[yi.si].h}${BRANCHES[yi.bi].h}(${STEMS[yi.si].k}${BRANCHES[yi.bi].k})년이고, 일간 기준으로 ${yi.g}의 역할이 들어옵니다. ${yi.flow} 올해의 핵심 키워드는 “${yi.guide.domain}”입니다. 이 키워드를 기준으로 올해 무엇에 힘을 쓰고 무엇을 조심할지 계획해 보세요. ${currentLuckGod?`현재 대운의 중심 십성은 ${currentLuckGod}입니다. 10년 흐름의 핵심 분야는 “${YEAR_GUIDE[currentLuckGod].domain}”, 올해의 핵심 분야는 “${yi.guide.domain}”으로 읽습니다. 두 흐름이 겹치는 부분을 우선적으로 살펴보면 좋습니다.`:'성별을 선택하면 현재 대운까지 겹쳐서 더 자세히 볼 수 있습니다.'}`,
   yearBasis:`해석 근거: ${now}년 ${STEMS[yi.si].h}${BRANCHES[yi.bi].h} · 세운 십성 ${yi.g}${yi.rel.length?' · 일지와 '+yi.rel.join('·'):''}${currentLuckGod?' · 현재 대운 '+currentLuckGod:''}`,
   pro:{scores,groups,money,love,health,career,currentLuck,currentLuckGod,yearInfo:yi}
  };
@@ -441,7 +441,7 @@ function easySummary(day,counts,gods,str,rel){
  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]),top=sorted[0][0],low=sorted.at(-1)[0],g=gods[0]?.[0]||'비견';
  return {
   one:`당신의 기준점인 일간은 ${day.stem.h}(${day.stem.k}), ${day.stem.yin}${day.stem.el}입니다. ${day.stem.img}에 비유하며, 쉽게 말하면 “${day.stem.easy}”을 중심 이미지로 봅니다.`,
-  two:`오행에서는 ${top}(${ELSYMBOL[top]})이 상대적으로 눈에 띄고 ${low}은 덜 드러납니다. 강약 참고지표는 “${str.label}”입니다. 이것은 좋고 나쁨 점수가 아니라 균형을 살펴보는 보조 지표입니다.`,
+  two:`오행 분포에서는 ${top} 기운이 상대적으로 두드러지고, ${low} 기운은 비교적 적게 나타납니다. 기초 균형 참고값은 “${str.label}”입니다. 이것은 좋고 나쁨을 매기는 점수가 아니라 전체 균형을 살펴보는 보조 지표입니다.`,
   three:`십성 관계에서는 ${g}(${GOD_TEXT[g]})의 언어가 비교적 눈에 띕니다. 실제 생활에서는 업무·학습·관계에서 이런 패턴이 나타나는지 확인해 보는 방식으로 활용하세요.`,
   four:rel.length?`원국 안에는 ${rel.slice(0,3).join(', ')} 같은 관계가 보입니다. 이를 사건 예언이 아니라 서로 다른 기운이 부딪히거나 연결되는 구조적 신호로 해석합니다.`:'강하게 표시되는 합·충 관계가 많지 않습니다. 한 항목만으로 성격이나 사건을 확정하지 않는 것이 중요합니다.'
  };
@@ -536,7 +536,7 @@ function showSaju(){
   document.getElementById('lunarSummary').textContent=x.lunarInfo?`음력 참고: ${x.lunarInfo.y}-${pad(x.lunarInfo.m)}-${pad(x.lunarInfo.d)}${x.lunarInfo.leap?' 윤달':''}`:'';
   document.getElementById('easyDay').textContent=`${day.stem.h}(${day.stem.k}) · ${day.stem.yin}${day.stem.el}`;
   document.getElementById('easySeason').textContent=`${seasonalName(mp.mi)} · ${mp.jie.ko} 이후 ${BRANCHES[mp.bi].k}월`;
-  document.getElementById('easyStrength').textContent=`${str.label} · 균형 참고 ${str.helpers.join('·')}`;
+  document.getElementById('easyStrength').textContent=`${str.label} · 보완 참고 ${str.helpers.join('·')}`;
   document.getElementById('easyGod').textContent=gods.slice(0,2).map(x=>x[0]).join(' · ');
   document.getElementById('personalityText').textContent=personal.personality;
   document.getElementById('personalityBasis').textContent=personal.personalityBasis;
@@ -559,21 +559,22 @@ function showSaju(){
   document.getElementById('yearThemeText').textContent=personal.year;
   document.getElementById('yearThemeBasis').textContent=personal.yearBasis;
   const pro=personal.pro,grp=pro.groups,leader=pro.career.leader;
-  document.getElementById('proCoreText').textContent=`일간 ${day.stem.h}(${day.stem.k})을 중심으로 ${seasonalName(mp.mi)}의 월령을 받고 있습니다. 오행은 ${Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0]}이 상대적으로 강하고 ${Object.entries(counts).sort((a,b)=>a[1]-b[1])[0][0]}이 낮으며, 기초 강약지표는 ${str.label}입니다. 십성 역할군에서는 ${leader}이 가장 눈에 띄어 이 영역을 삶에서 어떻게 쓰는지가 명식의 중요한 특징으로 보입니다.`;
-  document.getElementById('proCoreBasis').textContent=`근거: 일간 ${day.stem.h}${day.stem.el} · 월지 ${BRANCHES[mp.bi].h} · 강약 ${Math.round(str.ratio*100)}% · ${leader} ${grp[leader].toFixed(1)}`;
-  document.getElementById('proCareerText').textContent=pro.career.text+` 식상 ${grp.식상.toFixed(1)}, 재성 ${grp.재성.toFixed(1)}, 관성 ${grp.관성.toFixed(1)}, 인성 ${grp.인성.toFixed(1)}, 비겁 ${grp.비겁.toFixed(1)}의 상대적 조합을 함께 보면 한쪽 능력만으로 승부하기보다 어떤 역할을 중심으로 다른 능력을 보완해야 하는지가 보입니다.`;
+  const sortedElements=Object.entries(counts).sort((a,b)=>b[1]-a[1]),strongEl=sortedElements[0][0],weakEl=sortedElements.at(-1)[0];
+  document.getElementById('proCoreText').textContent=`나를 나타내는 중심 기운은 일간 ${day.stem.h}(${day.stem.k})입니다. 태어난 계절은 ${seasonalName(mp.mi)}입니다. 여기에 월지 ${BRANCHES[mp.bi].h}(${BRANCHES[mp.bi].k})의 계절 영향도 함께 살펴봅니다. 오행 분포에서는 ${strongEl} 기운이 상대적으로 강하게 나타나고, ${weakEl} 기운은 비교적 적게 나타납니다. 기초 균형 참고값은 “${str.label}”입니다. 십성을 다섯 역할군으로 묶어 보면 “${leader}” 역할군이 가장 두드러집니다. 따라서 이 역할을 실제 생활에서 어떻게 사용하는지가 사주 구조를 이해하는 중요한 단서가 됩니다.`;
+  document.getElementById('proCoreBasis').textContent=`근거: 일간 ${day.stem.h}(${day.stem.k}) · 일간의 오행 ${day.stem.el} · 월지 ${BRANCHES[mp.bi].h}(${BRANCHES[mp.bi].k}) · 일간을 돕는 기운 비율 약 ${Math.round(str.ratio*100)}% · 두드러지는 역할군 ${leader} ${grp[leader].toFixed(1)}`;
+  document.getElementById('proCareerText').textContent=pro.career.text+` 역할군별 참고값은 식상 ${grp.식상.toFixed(1)}, 재성 ${grp.재성.toFixed(1)}, 관성 ${grp.관성.toFixed(1)}, 인성 ${grp.인성.toFixed(1)}, 비겁 ${grp.비겁.toFixed(1)}입니다. 이 값은 점수나 등급이 아니라 서로 어떤 역할이 상대적으로 더 눈에 띄는지 비교하기 위한 내부 참고값입니다. 한 가지 능력만 보는 대신 중심 역할과 보조 역할의 조합을 함께 살펴보세요.`;
   document.getElementById('proCareerBasis').textContent=`근거: 십성 역할군 우세 ${leader} · 주요 십성 ${gods[0]?.[0]||'비견'} · 월령 ${BRANCHES[mp.bi].h}`;
-  document.getElementById('proMoneyText').textContent=pro.money.text+` 현재 명식의 재성 합산은 ${pro.money.wealth.toFixed(1)}입니다. 정재는 안정적인 수입·저축·관리, 편재는 시장·거래·기회와 연결해 해석하는데, 어느 쪽이 더 높든 실제 재물 결과는 직업 역량과 지출 통제, 위험관리의 영향을 더 크게 받습니다.`;
+  document.getElementById('proMoneyText').textContent=pro.money.text+` 현재 사주 구성에서 재성의 내부 참고값은 ${pro.money.wealth.toFixed(1)}입니다. 정재는 안정적인 수입·저축·관리, 편재는 시장·거래·기회와 연결해 해석하는데, 어느 쪽이 더 높든 실제 재물 결과는 직업 역량과 지출 통제, 위험관리의 영향을 더 크게 받습니다.`;
   document.getElementById('proMoneyBasis').textContent=`근거: 정재 ${pro.scores.정재.toFixed(1)} · 편재 ${pro.scores.편재.toFixed(1)} · 비겁 ${grp.비겁.toFixed(1)} · 식상 ${grp.식상.toFixed(1)}`;
-  document.getElementById('proLoveText').textContent=pro.love.text+` 애정운에서는 상대를 만나는 시점 하나보다 일지의 안정성, 합·충 관계, 현재 세운에서 관계 역할이 강조되는지를 같이 봅니다. 일지와 해의 지지가 합하면 협력과 접점, 충하면 변화와 조율의 필요가 커지는 식으로 읽습니다.`;
+  document.getElementById('proLoveText').textContent=pro.love.text+` 애정운에서는 특정 만남 시점을 맞히기보다 일지의 관계 구조, 합·충의 움직임, 그리고 현재 세운에서 관계 주제가 얼마나 부각되는지를 함께 살펴봅니다. 일지와 해의 지지가 합하면 협력과 접점, 충하면 변화와 조율의 필요가 커지는 식으로 읽습니다.`;
   document.getElementById('proLoveBasis').textContent=`근거: 일지 ${BRANCHES[dp.bi].h} · ${pro.love.basis.length?pro.love.basis.join(', '):'강한 일지 충·합 표시 적음'} · 올해 ${pro.yearInfo.g}`;
-  document.getElementById('proHealthText').textContent=pro.health.text+` 전문 해석에서도 오행으로 특정 질병을 맞히는 방식은 사용하지 않습니다. 건강운은 몸의 상태를 예언하는 항목이 아니라 과로·수면·활동·휴식처럼 생활 리듬을 점검하는 참고 영역으로 제공합니다.`;
+  document.getElementById('proHealthText').textContent=pro.health.text+` 전문 해석에서도 오행으로 특정 질병을 맞히는 방식은 사용하지 않습니다. 건강운은 몸의 상태를 예언하거나 질병을 판단하는 항목이 아닙니다. 과로, 수면, 활동량, 휴식 같은 생활 리듬을 돌아보는 참고 영역으로 제공합니다.`;
   document.getElementById('proHealthBasis').textContent=`근거: 오행 상위 ${pro.health.high} · 하위 ${pro.health.low}. 의료 진단이나 치료 판단에 사용하지 않습니다.`;
   document.getElementById('proFamilyText').textContent=`연주와 월주는 초기 환경·가족·사회적 역할을, 비겁은 형제·동료와의 경쟁과 협력을, 인성은 보호·배움·지원의 관계를 보는 보조 언어로 사용합니다. 현재 비겁은 ${grp.비겁.toFixed(1)}, 인성은 ${grp.인성.toFixed(1)} 정도입니다. 가족관계의 실제 모습은 사주 한 항목보다 살아온 환경과 대화 방식이 훨씬 중요하므로, 이 결과는 내가 사람 사이에서 맡기 쉬운 역할을 돌아보는 참고로 활용하세요.`;
   document.getElementById('proFamilyBasis').textContent=`근거: 연주 ${fmtPillar(yp)} · 월주 ${fmtPillar(mp)} · 비겁 ${grp.비겁.toFixed(1)} · 인성 ${grp.인성.toFixed(1)}`;
   if(pro.currentLuck){
     const cg=pro.currentLuckGod;
-    document.getElementById('currentLuckText').textContent=`현재 나이 기준으로 ${fmtPillar(pro.currentLuck)} 대운 구간에 해당하며, 일간 기준 ${cg}의 역할이 중심에 들어옵니다. ${YEAR_GUIDE[cg].flow} 10년 전체가 똑같다는 뜻은 아니고, 이 긴 흐름 위에 매년 다른 세운이 겹치면서 실제 관심사가 달라진다고 봅니다.`;
+    document.getElementById('currentLuckText').textContent=`현재 나이를 기준으로 보면 ${fmtPillar(pro.currentLuck)} 대운 구간에 해당합니다. 이 대운의 중심 십성은 ${cg}입니다. ${YEAR_GUIDE[cg].flow} 약 10년 동안 같은 사건이 반복된다는 뜻은 아닙니다. 큰 흐름 위에 해마다 다른 세운이 겹치면서 관심 분야와 선택의 우선순위가 달라질 수 있다고 봅니다.`;
     document.getElementById('currentLuckBasis').textContent=`근거: 대운 시작 약 ${ageText(pro.currentLuck.age)} · 대운 십성 ${cg} · 핵심 분야 ${YEAR_GUIDE[cg].domain}`;
   }else{
     document.getElementById('currentLuckText').textContent='성별을 선택하면 전통적인 순행·역행 규칙에 따라 현재 나이에 해당하는 대운을 계산해 10년 단위의 흐름을 함께 보여드립니다.';
