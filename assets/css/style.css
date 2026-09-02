@@ -57,3 +57,10 @@
 .current-badge{display:inline-block!important;background:#7a5b12;color:white!important;font-size:10px!important;font-weight:900;border-radius:999px;padding:4px 7px;margin-bottom:7px}
 .future-table table{min-width:1050px}.future-table td{vertical-align:top;line-height:1.55}.future-table th{white-space:nowrap}
 @media(max-width:760px){.pro-analysis-grid{grid-template-columns:1fr}.personal-section p{font-size:15px}.section-heading-row{display:block}}
+
+.article-meta{margin:-2px 0 20px;color:#64748b;font-size:13px;border-bottom:1px solid #e5e7eb;padding-bottom:12px}
+.install-guide-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:24px;align-items:start}
+.install-guide-grid ol{padding-left:22px}.install-guide-grid li{margin:8px 0;line-height:1.65}
+.qr-card{border:1px solid #e5e7eb;border-radius:18px;padding:20px;text-align:center;background:#f8fafc;position:sticky;top:90px}
+.qr-card img{width:min(260px,100%);height:auto;border-radius:12px;background:#fff;padding:8px}
+@media(max-width:760px){.install-guide-grid{grid-template-columns:1fr}.qr-card{position:static}}

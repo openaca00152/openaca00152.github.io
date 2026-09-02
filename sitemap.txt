@@ -34,3 +34,4 @@ https://openaca00152.github.io/articles/saju-myths.html
 https://openaca00152.github.io/articles/calculation-method.html
 https://openaca00152.github.io/articles/lottery-randomness.html
 https://openaca00152.github.io/articles/self-reflection.html
+https://openaca00152.github.io/install.html
