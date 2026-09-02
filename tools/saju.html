@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-7983503652793859">
 <title>만세력·개인 사주 리포트 | 나의사주, 나의로또</title>
-<meta name="description" content="양력·음력 생년월일과 생시를 바탕으로 실제 절입 시각을 적용한 만세력과 쉬운 개인 사주 리포트를 제공합니다. 출생지역은 진태양시 보정을 선택할 때만 사용합니다.">
+<meta name="description" content="양력·음력 생년월일과 생시를 바탕으로 만세력, 쉬운 개인 사주 풀이, 직업·재물·애정·건강·대운·세운의 전통 명리 해석을 제공합니다.">
 <link rel="canonical" href="https://openaca00152.github.io/tools/saju.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0f172a">
@@ -39,9 +39,9 @@
 <div class="breadcrumb"><a href="/">홈</a> / 만세력·개인 사주</div>
 
 <section class="tool-card">
-  <span class="tag">V3.3 · 간단 입력 · 선택형 정밀 보정</span>
-  <h1>만세력 + 쉬운 개인 사주 리포트</h1>
-  <p class="lead">처음에는 생일, 태어난 시간, 성별만 입력하세요. 출생지역과 진태양시 보정은 필요한 경우에만 고급 설정에서 사용합니다.</p>
+  <span class="tag">V3.4 · 풍성한 쉬운 풀이 · 전문 운세 해석</span>
+  <h1>만세력 + 쉬운 개인 사주·운세 리포트</h1>
+  <p class="lead">생일과 태어난 시간을 입력하면 먼저 어려운 전문용어 없이 성격·직업·재물·애정·생활 리듬을 쉽게 풀어드립니다. 더 깊게 보고 싶다면 아래 전문 만세력 해석에서 대운과 앞으로의 연도별 흐름까지 확인할 수 있습니다.</p>
 
   <div class="notice info">
     <strong>간단하게 사용하세요</strong><br>
@@ -183,53 +183,144 @@
     </div>
 
     <div class="personal-report">
-      <h2>쉬운 개인 해설</h2>
+      <div class="section-heading-row">
+        <div>
+          <span class="tag">어려운 용어 없이</span>
+          <h2>쉬운 개인 사주 풀이</h2>
+          <p class="muted">한두 문장으로 끝내지 않고 실제 생활에서 어떻게 나타날 수 있는지 충분히 풀어서 설명합니다.</p>
+        </div>
+      </div>
+
       <div class="personal-section">
         <h3>① 성격과 사고방식</h3>
         <p id="personalityText"></p>
-        <small id="personalityBasis"></small>
+        <div class="basis-box" id="personalityBasis"></div>
       </div>
       <div class="personal-section">
         <h3>② 일·직업 스타일</h3>
         <p id="workText"></p>
-        <small id="workBasis"></small>
+        <div class="basis-box" id="workBasis"></div>
       </div>
       <div class="personal-section">
-        <h3>③ 공부·학습 방식</h3>
+        <h3>③ 공부·배움의 방식</h3>
         <p id="studyText"></p>
-        <small id="studyBasis"></small>
+        <div class="basis-box" id="studyBasis"></div>
       </div>
       <div class="personal-section">
         <h3>④ 인간관계·소통</h3>
         <p id="relationEasyText"></p>
-        <small id="relationEasyBasis"></small>
+        <div class="basis-box" id="relationEasyBasis"></div>
       </div>
-      <div class="personal-section">
-        <h3>⑤ 재물 관리 성향</h3>
+      <div class="personal-section fortune-easy fortune-money">
+        <h3>⑤ 재물운 · 돈을 다루는 방식</h3>
         <p id="moneyText"></p>
-        <small id="moneyBasis"></small>
+        <div class="basis-box" id="moneyBasis"></div>
+      </div>
+      <div class="personal-section fortune-easy fortune-love">
+        <h3>⑥ 애정운 · 인연과 관계</h3>
+        <p id="loveEasyText"></p>
+        <div class="basis-box" id="loveEasyBasis"></div>
+      </div>
+      <div class="personal-section fortune-easy fortune-health">
+        <h3>⑦ 건강운 · 생활 리듬</h3>
+        <p id="healthEasyText"></p>
+        <div class="basis-box" id="healthEasyBasis"></div>
       </div>
       <div class="personal-section">
-        <h3>⑥ 강점으로 활용할 부분</h3>
+        <h3>⑧ 내가 잘 살릴 수 있는 강점</h3>
         <p id="strengthEasyText"></p>
-        <small id="strengthEasyBasis"></small>
+        <div class="basis-box" id="strengthEasyBasis"></div>
       </div>
       <div class="personal-section">
-        <h3>⑦ 주의해서 볼 습관</h3>
+        <h3>⑨ 조심해서 볼 습관</h3>
         <p id="cautionText"></p>
-        <small id="cautionBasis"></small>
+        <div class="basis-box" id="cautionBasis"></div>
       </div>
-      <div class="personal-section">
-        <h3>⑧ 올해의 자기점검 테마</h3>
+      <div class="personal-section fortune-easy fortune-year">
+        <h3>⑩ 올해의 운세 흐름</h3>
         <p id="yearThemeText"></p>
-        <small id="yearThemeBasis"></small>
+        <div class="basis-box" id="yearThemeBasis"></div>
+      </div>
+
+      <div class="notice soft">
+        <strong>쉬운 풀이를 읽는 법</strong><br>
+        ‘좋다/나쁘다’보다 나에게 반복되는 성향과 선택 습관을 보는 데 초점을 맞춥니다. 재물·애정·건강 표현도 미래 사건을 확정하는 예언이 아니라 전통 명리의 상징을 생활 언어로 풀어낸 참고 해석입니다.
       </div>
     </div>
 
     <details class="pro-details">
-      <summary>전문 만세력 자세히 보기</summary>
+
+      
+      <summary>전문 만세력·운세 해석 자세히 보기</summary>
+
+      <div class="pro-intro">
+        <span class="tag">전통 명리 관점의 심화 분석</span>
+        <h2>전문 만세력에서는 무엇을 더 보나요?</h2>
+        <p>단순히 한자를 많이 보여주는 것이 아니라 <strong>일간·월령·오행 균형·십성·일지·합충·대운·세운</strong>을 함께 보고 직업, 재물, 인연, 건강 생활리듬과 시간의 흐름을 연결합니다. 아래의 ‘해석 근거’를 보면 왜 그런 설명이 나왔는지 확인할 수 있습니다.</p>
+      </div>
+
+      <div class="pro-analysis-grid">
+        <article class="pro-analysis-card">
+          <span class="pro-kicker">명식 핵심</span>
+          <h3>내 사주의 중심 구조</h3>
+          <p id="proCoreText"></p>
+          <small id="proCoreBasis"></small>
+        </article>
+        <article class="pro-analysis-card">
+          <span class="pro-kicker">직업·사업</span>
+          <h3>일에서 힘이 나는 방식</h3>
+          <p id="proCareerText"></p>
+          <small id="proCareerBasis"></small>
+        </article>
+        <article class="pro-analysis-card fortune-card money">
+          <span class="pro-kicker">재물운</span>
+          <h3>돈·기회·자원 흐름</h3>
+          <p id="proMoneyText"></p>
+          <small id="proMoneyBasis"></small>
+        </article>
+        <article class="pro-analysis-card fortune-card love">
+          <span class="pro-kicker">애정운</span>
+          <h3>인연·배우자·관계 패턴</h3>
+          <p id="proLoveText"></p>
+          <small id="proLoveBasis"></small>
+        </article>
+        <article class="pro-analysis-card fortune-card health">
+          <span class="pro-kicker">건강운</span>
+          <h3>오행으로 보는 생활 리듬</h3>
+          <p id="proHealthText"></p>
+          <small id="proHealthBasis"></small>
+        </article>
+        <article class="pro-analysis-card">
+          <span class="pro-kicker">가족·대인</span>
+          <h3>사람 사이의 역할과 거리</h3>
+          <p id="proFamilyText"></p>
+          <small id="proFamilyBasis"></small>
+        </article>
+      </div>
+
+      <section class="current-luck-panel">
+        <div class="section-heading-row">
+          <div>
+            <span class="tag">시간의 흐름</span>
+            <h2>현재 대운과 올해의 흐름</h2>
+          </div>
+        </div>
+        <div class="grid grid-2 detail-grid">
+          <div class="report-block">
+            <h3>현재 10년 흐름 · 대운</h3>
+            <p id="currentLuckText"></p>
+            <small id="currentLuckBasis"></small>
+          </div>
+          <div class="report-block">
+            <h3>올해 흐름 · 세운</h3>
+            <p id="currentYearProText"></p>
+            <small id="currentYearProBasis"></small>
+          </div>
+        </div>
+      </section>
 
       <h2>원국 · 연월일시</h2>
+      <p class="muted">연주는 뿌리와 초기 환경, 월주는 사회생활과 계절의 힘, 일주는 나 자신과 가까운 관계, 시주는 후반의 관심사와 결과를 읽을 때 참고합니다.</p>
       <div id="pillarsPro" class="pillars-pro"></div>
 
       <div class="grid grid-2 detail-grid">
@@ -237,31 +328,42 @@
         <div class="report-block"><h3>생시 보정</h3><p id="timeCorrection"></p></div>
       </div>
 
-      <h2>가중 오행 분포</h2>
-      <p class="muted">천간과 지장간을 집계하고 월지를 조금 더 크게 반영한 사이트 내부 참고지표입니다.</p>
+      <h2>오행 균형</h2>
+      <p class="muted">천간과 지장간을 함께 보고 월지의 계절 영향에 가중치를 준 내부 참고지표입니다. 숫자가 높다고 무조건 좋거나 낮다고 나쁜 것은 아닙니다.</p>
       <div id="elementBars" class="element-list"></div>
 
-      <h2>십성 분포</h2>
+      <h2>십성 분포 · 어떤 역할이 강한가</h2>
+      <p class="muted">십성은 ‘나와 다른 기운의 관계’를 역할 언어로 바꾼 것입니다. 재성은 자원·재물, 관성은 책임·규칙, 식상은 표현·생산, 인성은 학습·지원, 비겁은 자아·동료를 주로 상징합니다.</p>
       <div id="godChips" class="ten-gods"></div>
 
-      <h2>합·충·형·파·해 관계</h2>
+      <h2>합·충·형·파·해 · 관계의 움직임</h2>
       <div id="relationChips" class="relation-list"></div>
 
       <div class="grid grid-2 detail-grid">
         <div class="report-block"><h3>신강·신약 기초 참고</h3><p id="strengthText"></p></div>
-        <div class="report-block"><h3>용신은 자동 확정하지 않습니다</h3><p id="helperText"></p></div>
+        <div class="report-block"><h3>균형을 돕는 오행 후보</h3><p id="helperText"></p></div>
       </div>
 
-      <h2>대운</h2>
+      <h2>대운 · 약 10년 단위 흐름</h2>
+      <p class="muted">성별을 선택하면 전통적인 순행·역행 규칙으로 계산합니다. 현재 나이에 해당하는 대운은 강조해서 표시합니다.</p>
       <div id="luckSection"></div>
 
-      <h2>앞으로 6년 세운 간지</h2>
-      <div class="table-wrap">
+      <h2>앞으로 6년 세운 · 해마다 달라지는 관심 분야</h2>
+      <p class="muted">‘대박/불운’처럼 단정하지 않고, 그해 어떤 역할과 선택이 부각되기 쉬운지 읽습니다.</p>
+      <div class="table-wrap future-table">
         <table>
-          <thead><tr><th>연도</th><th>세운</th><th>일간 기준 십성</th><th>상징 언어</th></tr></thead>
+          <thead>
+            <tr><th>연도</th><th>세운</th><th>십성</th><th>중점 분야</th><th>흐름 읽기</th><th>주의 포인트</th></tr>
+          </thead>
           <tbody id="annualRows"></tbody>
         </table>
       </div>
+
+      <div class="notice warn">
+        <strong>건강·재물·애정운에 대한 중요한 안내</strong><br>
+        건강운은 의료 진단이 아니며 오행의 전통적 신체 상징과 생활 리듬을 설명하는 수준입니다. 증상이나 질병 문제는 의료 전문가에게 확인하세요. 재물운은 투자 수익이나 복권 당첨을 예측하지 않으며, 애정운도 특정 결혼·이별 시점을 보장하지 않습니다.
+      </div>
+
     </details>
 
     <div class="notice">
@@ -274,7 +376,7 @@
 <section class="article" style="margin-top:22px">
   <h2>왜 쉬운 결과와 전문 결과를 나눴나요?</h2>
   <p>지장간·십성·12운성·대운은 처음 보는 사람에게 어렵습니다. 그래서 먼저 생활 언어로 된 개인 해설을 보여주고, 필요할 때만 전문 만세력을 펼쳐보도록 구성했습니다.</p>
-  <p><a class="btn btn-outline" href="/methodology.html">V3.3 계산 기준 자세히 보기</a></p>
+  <p><a class="btn btn-outline" href="/methodology.html">V3.4 계산 기준 자세히 보기</a></p>
 </section>
 
 </div>
@@ -301,9 +403,9 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js?v=20260902-v33" defer></script>
-<script src="/assets/data/solar-terms.js?v=20260902-v33" defer></script>
-<script src="/assets/data/korean-lunar.js?v=20260902-v33" defer></script>
-<script src="/assets/js/saju.js?v=20260902-v33" defer></script>
+<script src="/assets/js/site.js?v=20260902-v34" defer></script>
+<script src="/assets/data/solar-terms.js?v=20260902-v34" defer></script>
+<script src="/assets/data/korean-lunar.js?v=20260902-v34" defer></script>
+<script src="/assets/js/saju.js?v=20260902-v34" defer></script>
 </body>
 </html>
