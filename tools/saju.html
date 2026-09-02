@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-7983503652793859">
 <title>만세력·개인 사주 리포트 | 나의사주, 나의로또</title>
-<meta name="description" content="양력·음력 생년월일, 생시, 대한민국 출생지역을 바탕으로 실제 절입 시각을 적용한 만세력과 쉬운 개인 사주 리포트를 제공합니다.">
+<meta name="description" content="양력·음력 생년월일과 생시를 바탕으로 실제 절입 시각을 적용한 만세력과 쉬운 개인 사주 리포트를 제공합니다. 출생지역은 진태양시 보정을 선택할 때만 사용합니다.">
 <link rel="canonical" href="https://openaca00152.github.io/tools/saju.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0f172a">
@@ -39,13 +39,13 @@
 <div class="breadcrumb"><a href="/">홈</a> / 만세력·개인 사주</div>
 
 <section class="tool-card">
-  <span class="tag">V3.1 · 쉬운 입력 · 전문 계산</span>
+  <span class="tag">V3.3 · 간단 입력 · 선택형 정밀 보정</span>
   <h1>만세력 + 쉬운 개인 사주 리포트</h1>
-  <p class="lead">처음에는 생일, 태어난 시간, 성별, 출생지역만 입력하세요. 고급 계산 설정은 필요한 경우에만 펼치면 됩니다.</p>
+  <p class="lead">처음에는 생일, 태어난 시간, 성별만 입력하세요. 출생지역과 진태양시 보정은 필요한 경우에만 고급 설정에서 사용합니다.</p>
 
   <div class="notice info">
-    <strong>대한민국 출생 기준</strong><br>
-    현재 버전은 대한민국에서 기록된 출생시각을 기준으로 설계했습니다. 해외 출생은 국가별 시간대와 서머타임 처리가 달라질 수 있어 지원하지 않습니다.
+    <strong>간단하게 사용하세요</strong><br>
+    대한민국에서 기록된 출생시각이라면 출생지역 없이 기본 계산이 가능합니다. 진태양시 보정은 선택 기능이며, 해외 출생은 국가별 시간대와 서머타임 차이 때문에 현재 지원하지 않습니다.
   </div>
 
   <div class="form-grid basic-grid">
@@ -88,37 +88,72 @@
       </select>
       <small class="muted">대운 방향 계산에만 사용합니다.</small>
     </div>
-
-    <div class="field">
-      <label for="birthPlace">출생지역</label>
-      <select id="birthPlace">
-        <option>서울</option><option>부산</option><option>대구</option><option>인천</option>
-        <option>광주</option><option>대전</option><option>울산</option><option>세종</option>
-        <option>수원</option><option>청주</option><option>전주</option><option selected>군산</option>
-        <option>익산</option><option>목포</option><option>여수</option><option>포항</option>
-        <option>창원</option><option>제주</option><option>서귀포</option><option>강릉</option><option>춘천</option>
-      </select>
-    </div>
   </div>
 
   <details class="advanced-settings">
     <summary>고급 계산 설정</summary>
+
+    <div class="notice soft">
+      <strong>대부분의 사용자는 기본값 그대로 사용하세요.</strong><br>
+      진태양시 보정은 출생시간이 시주 경계에 매우 가깝거나 전문 만세력과 비교하려는 경우에만 권합니다.
+    </div>
+
     <div class="grid grid-2 detail-grid">
       <div class="field">
-        <label for="timeMode">생시 기준</label>
+        <label for="timeMode">생시 계산 기준</label>
         <select id="timeMode">
-          <option value="standard">기록된 한국 표준시</option>
+          <option value="standard">기록된 한국 표준시 · 권장</option>
           <option value="solar">진태양시 근사 보정</option>
         </select>
-        <small class="muted">보통은 기본값을 사용하세요.</small>
+        <small class="muted">일반적인 경우에는 출생지역을 입력할 필요가 없습니다.</small>
       </div>
       <div class="field">
         <label for="dayBoundary">23시 출생의 일주 기준</label>
         <select id="dayBoundary">
-          <option value="00">자정(00:00)부터 다음 날</option>
+          <option value="00">자정(00:00)부터 다음 날 · 기본</option>
           <option value="23">23:00부터 다음 날로 계산</option>
         </select>
         <small class="muted">명리 학파별 차이가 있는 항목입니다.</small>
+      </div>
+    </div>
+
+    <div id="solarLocationWrap" class="solar-location-wrap hide">
+      <h3>진태양시 보정용 출생지역</h3>
+      <p class="muted">정확한 지역이 목록에 없다면 가장 가까운 도시를 선택하세요. 예: 전남 영광 → 광주. 시주 경계에 매우 가까운 경우에만 ‘기타 대한민국 지역’에서 경도를 직접 입력하면 됩니다.</p>
+      <div class="grid grid-2 detail-grid">
+        <div class="field">
+          <label for="birthPlace">가까운 기준 도시</label>
+          <select id="birthPlace">
+            <option value="서울">서울</option>
+            <option value="인천">인천</option>
+            <option value="경기 수원">수원</option>
+            <option value="강원 춘천">춘천</option>
+            <option value="강원 강릉">강릉</option>
+            <option value="충북 청주">청주</option>
+            <option value="대전">대전</option>
+            <option value="충남 천안">천안</option>
+            <option value="전북 전주">전주</option>
+            <option value="전북 군산">군산</option>
+            <option value="광주" selected>광주</option>
+            <option value="전남 목포">목포</option>
+            <option value="전남 여수">여수</option>
+            <option value="대구">대구</option>
+            <option value="경북 포항">포항</option>
+            <option value="부산">부산</option>
+            <option value="울산">울산</option>
+            <option value="경남 창원">창원</option>
+            <option value="제주 제주시">제주</option>
+            <option value="제주 서귀포">서귀포</option>
+            <option value="기타 대한민국 지역">기타 대한민국 지역</option>
+          </select>
+        </div>
+        <div id="otherPlaceWrap" class="field hide">
+          <label for="otherPlaceName">지역 이름</label>
+          <input id="otherPlaceName" type="text" placeholder="예: 전남 영광군">
+          <label for="customLongitude" style="margin-top:10px">경도(동경)</label>
+          <input id="customLongitude" type="number" min="124" max="132" step="0.0001" placeholder="예: 영광 126.5125">
+          <small class="muted">정확한 경도를 모르면 가까운 도시를 선택하는 편이 더 간단합니다.</small>
+        </div>
       </div>
     </div>
   </details>
@@ -239,7 +274,7 @@
 <section class="article" style="margin-top:22px">
   <h2>왜 쉬운 결과와 전문 결과를 나눴나요?</h2>
   <p>지장간·십성·12운성·대운은 처음 보는 사람에게 어렵습니다. 그래서 먼저 생활 언어로 된 개인 해설을 보여주고, 필요할 때만 전문 만세력을 펼쳐보도록 구성했습니다.</p>
-  <p><a class="btn btn-outline" href="/methodology.html">V3.1 계산 기준 자세히 보기</a></p>
+  <p><a class="btn btn-outline" href="/methodology.html">V3.3 계산 기준 자세히 보기</a></p>
 </section>
 
 </div>
@@ -249,7 +284,7 @@
   <div class="footer-inner">
     <div>
       <h3>나의사주, 나의로또</h3>
-      <p>전통 명리학을 배우고 생년월일·생시·출생지역을 바탕으로 절입시각 기반 만세력과 쉬운 개인 해설을 제공하는 정보 서비스입니다. 명리 해석은 문화·교육·오락 목적의 참고 정보이며 미래 결과를 보장하지 않습니다.</p>
+      <p>전통 명리학을 배우고 생년월일·생시를 바탕으로 절입시각 기반 만세력과 쉬운 개인 해설을 제공하는 정보 서비스입니다. 출생지역은 진태양시 보정을 선택할 때만 사용하며, 명리 해석은 문화·교육·오락 목적의 참고 정보입니다.</p>
       <small>© <span data-year></span> 나의사주, 나의로또. All rights reserved.</small>
     </div>
     <div>
@@ -266,9 +301,9 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js?v=20260901-v31" defer></script>
-<script src="/assets/data/solar-terms.js?v=20260901-v31" defer></script>
-<script src="/assets/data/korean-lunar.js?v=20260901-v31" defer></script>
-<script src="/assets/js/saju.js?v=20260901-v31" defer></script>
+<script src="/assets/js/site.js?v=20260902-v33" defer></script>
+<script src="/assets/data/solar-terms.js?v=20260902-v33" defer></script>
+<script src="/assets/data/korean-lunar.js?v=20260902-v33" defer></script>
+<script src="/assets/js/saju.js?v=20260902-v33" defer></script>
 </body>
 </html>

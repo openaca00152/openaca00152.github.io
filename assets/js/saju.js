@@ -36,9 +36,36 @@ const TWELVE=['장생','목욕','관대','건록','제왕','쇠','병','사','�
 const CHANGSHENG_START=[11,6,2,9,2,9,5,0,8,3]; // 甲亥 乙午 丙寅 丁酉 戊寅 己酉 庚巳 辛子 壬申 癸卯
 const CITIES={
  '서울':126.9780,'부산':129.0756,'대구':128.6014,'인천':126.7052,'광주':126.8526,'대전':127.3845,
- '울산':129.3114,'세종':127.2890,'수원':127.0286,'청주':127.4890,'전주':127.1480,'군산':126.7366,
- '익산':126.9578,'목포':126.3922,'여수':127.6622,'포항':129.3435,'창원':128.6811,'제주':126.5312,
- '서귀포':126.5600,'강릉':128.8761,'춘천':127.7298
+ '울산':129.3114,'세종':127.2890,
+ '경기 수원':127.0286,'경기 성남':127.1262,'경기 고양':126.8320,'경기 용인':127.1776,'경기 안양':126.9568,
+ '경기 부천':126.7660,'경기 안산':126.8308,'경기 화성':126.8315,'경기 평택':127.1127,'경기 의정부':127.0338,
+ '경기 파주':126.7799,'경기 김포':126.7158,'경기 광주':127.2551,'경기 양평':127.4875,'경기 연천':127.0746,
+ '강원 춘천':127.7298,'강원 원주':127.9202,'강원 강릉':128.8761,'강원 속초':128.5918,'강원 동해':129.1143,
+ '강원 태백':128.9856,'강원 삼척':129.1650,'강원 홍천':127.8887,'강원 횡성':127.9850,'강원 양구':127.9901,
+ '강원 인제':128.1705,'강원 고성':128.4678,'강원 양양':128.6191,
+ '충북 청주':127.4890,'충북 충주':127.9259,'충북 제천':128.1909,'충북 보은':127.7295,'충북 옥천':127.5714,
+ '충북 영동':127.7834,'충북 진천':127.4358,'충북 괴산':127.7867,'충북 음성':127.6905,'충북 단양':128.3656,
+ '충남 천안':127.1522,'충남 공주':127.1190,'충남 보령':126.6128,'충남 아산':127.0046,'충남 서산':126.4503,
+ '충남 논산':127.0988,'충남 계룡':127.2486,'충남 당진':126.6458,'충남 금산':127.4880,'충남 부여':126.9098,
+ '충남 서천':126.6913,'충남 청양':126.8023,'충남 홍성':126.6608,'충남 예산':126.8440,'충남 태안':126.2979,
+ '전북 전주':127.1480,'전북 군산':126.7366,'전북 익산':126.9578,'전북 정읍':126.8560,'전북 남원':127.3903,
+ '전북 김제':126.8808,'전북 완주':127.1622,'전북 진안':127.4248,'전북 무주':127.6608,'전북 장수':127.5212,
+ '전북 임실':127.2890,'전북 순창':127.1374,'전북 고창':126.7020,'전북 부안':126.7330,
+ '전남 목포':126.3922,'전남 여수':127.6622,'전남 순천':127.4872,'전남 나주':126.7108,'전남 광양':127.6959,
+ '전남 담양':126.9882,'전남 곡성':127.2922,'전남 구례':127.4628,'전남 고흥':127.2849,'전남 보성':127.0800,
+ '전남 화순':126.9887,'전남 장흥':126.9071,'전남 강진':126.7672,'전남 해남':126.5991,'전남 영암':126.6970,
+ '전남 무안':126.4817,'전남 함평':126.5166,'전남 영광':126.51245,'전남 장성':126.7849,'전남 완도':126.7554,
+ '전남 진도':126.2635,'전남 신안':126.3523,
+ '경북 포항':129.3435,'경북 경주':129.2247,'경북 김천':128.1137,'경북 안동':128.7294,'경북 구미':128.3446,
+ '경북 영주':128.6241,'경북 영천':128.9408,'경북 상주':128.1590,'경북 문경':128.1868,'경북 경산':128.7415,
+ '경북 의성':128.6970,'경북 청송':129.0571,'경북 영양':129.1124,'경북 영덕':129.3659,'경북 청도':128.7341,
+ '경북 고령':128.2629,'경북 성주':128.2835,'경북 칠곡':128.4017,'경북 예천':128.4376,'경북 봉화':128.7326,
+ '경북 울진':129.4006,'경북 울릉':130.9055,
+ '경남 창원':128.6811,'경남 진주':128.1076,'경남 통영':128.4332,'경남 사천':128.0642,'경남 김해':128.8894,
+ '경남 밀양':128.7466,'경남 거제':128.6213,'경남 양산':129.0371,'경남 의령':128.2616,'경남 함안':128.4065,
+ '경남 창녕':128.4922,'경남 고성':128.3222,'경남 남해':127.8925,'경남 하동':127.7513,'경남 산청':127.8739,
+ '경남 함양':127.7252,'경남 거창':127.9095,'경남 합천':128.1658,
+ '제주 제주시':126.5312,'제주 서귀포':126.5600
 };
 const PAIRS={
  stemCombine:[[0,5],[1,6],[2,7],[3,8],[4,9]],
@@ -289,12 +316,24 @@ function getInput(){
  const unknown=document.getElementById('unknownTime').checked;
  const [hh,mm]=(unknown?'12:00':document.getElementById('birthTime').value).split(':').map(Number);
  const utcMs=localDateToUtc(y,m,d,hh,mm);
- const place=document.getElementById('birthPlace').value;
- const lon=CITIES[place];
  const timeMode=document.getElementById('timeMode').value;
+ let place='대한민국 표준시',placeLabel='대한민국 표준시',lon=null;
+ if(timeMode==='solar'){
+   place=document.getElementById('birthPlace').value;
+   placeLabel=place;
+   lon=CITIES[place];
+   if(place==='기타 대한민국 지역'){
+     placeLabel=document.getElementById('otherPlaceName').value.trim()||'기타 대한민국 지역';
+     const custom=Number(document.getElementById('customLongitude').value);
+     if(Number.isFinite(custom)&&custom>=124&&custom<=132)lon=custom;
+   }
+ }
  let basis={y,m,d,h:hh,min:mm},solar=null;
- if(!unknown&&timeMode==='solar'){solar=trueSolarParts(utcMs,lon);basis=solar}
- return {cal,y,m,d,hh,mm,unknown,utcMs,place,lon,timeMode,basis,solar,lunarInfo,converted,gender:document.getElementById('gender').value,boundary:document.getElementById('dayBoundary').value};
+ if(!unknown&&timeMode==='solar'){
+   if(!Number.isFinite(lon))throw new Error('진태양시 보정을 사용하려면 가까운 기준 도시를 선택하거나 대한민국 경도(약 124~132°E)를 입력해주세요.');
+   solar=trueSolarParts(utcMs,lon);basis=solar;
+ }
+ return {cal,y,m,d,hh,mm,unknown,utcMs,place:placeLabel,lon,timeMode,basis,solar,lunarInfo,converted,gender:document.getElementById('gender').value,boundary:document.getElementById('dayBoundary').value};
 }
 function showSaju(){
  try{
@@ -303,12 +342,8 @@ function showSaju(){
   const day={stem:STEMS[dp.si],branch:BRANCHES[dp.bi]},counts=weightedElements(ps),gods=dominantGod(dp.si,ps),str=strength(dp.si,counts),rel=findRelations(ps);
   const easy=easySummary(day,counts,gods,str,rel),personal=buildPersonalReport(dp.si,counts,gods,str,rel);
 
-  document.getElementById('inputSummary').textContent=`양력 ${x.y}-${pad(x.m)}-${pad(x.d)} · ${x.unknown?'생시 모름':pad(x.hh)+':'+pad(x.mm)} · ${x.place}${x.timeMode==='solar'?' · 진태양시 근사 보정':''}`;
+  document.getElementById('inputSummary').textContent=`양력 ${x.y}-${pad(x.m)}-${pad(x.d)} · ${x.unknown?'생시 모름':pad(x.hh)+':'+pad(x.mm)}${x.timeMode==='solar'?' · '+x.place+' 기준 진태양시 근사 보정':''}`;
   document.getElementById('lunarSummary').textContent=x.lunarInfo?`음력 참고: ${x.lunarInfo.y}-${pad(x.lunarInfo.m)}-${pad(x.lunarInfo.d)}${x.lunarInfo.leap?' 윤달':''}`:'';
-  document.getElementById('easyOne').textContent=easy.one;
-  document.getElementById('easyTwo').textContent=easy.two;
-  document.getElementById('easyThree').textContent=easy.three;
-  document.getElementById('easyFour').textContent=easy.four;
   document.getElementById('easyDay').textContent=`${day.stem.h}(${day.stem.k}) · ${day.stem.yin}${day.stem.el}`;
   document.getElementById('easySeason').textContent=`${seasonalName(mp.mi)} · ${mp.jie.ko} 이후 ${BRANCHES[mp.bi].k}월`;
   document.getElementById('easyStrength').textContent=`${str.label} · 균형 참고 ${str.helpers.join('·')}`;
@@ -339,7 +374,7 @@ function showSaju(){
   document.getElementById('helperText').textContent=`자동 용신 확정은 하지 않습니다. 균형을 볼 때 먼저 참고할 오행 후보는 ${str.helpers.join(', ')}입니다. 실제 용신·희신은 조후, 통근, 투간, 합화, 격국 등을 함께 보는 해석 영역입니다.`;
   document.getElementById('termText').textContent=`월주는 ${mp.jie.ko}(${mp.jie.han}) 절입 ${formatKoreaTime(mp.jie.ms)} 이후를 기준으로 계산했습니다. 연주는 해당 해 입춘의 실제 절입 시각을 기준으로 바뀝니다.`;
   if(!x.unknown&&x.timeMode==='solar')document.getElementById('timeCorrection').textContent=`입력 시각 ${pad(x.hh)}:${pad(x.mm)} → 경도 ${x.lon.toFixed(4)}°와 균시차를 이용한 진태양시 근사 ${pad(x.solar.h)}:${pad(x.solar.min)}. 시주 경계에 가까울수록 전문 프로그램과 비교를 권합니다.`;
-  else document.getElementById('timeCorrection').textContent=`시주는 기록된 한국 민간시각(Asia/Seoul)을 기준으로 계산합니다.${x.unknown?' 생시를 모르므로 시주는 제외했습니다.':''}`;
+  else document.getElementById('timeCorrection').textContent=`시주는 출생지역과 관계없이 기록된 한국 표준시(Asia/Seoul)를 기준으로 계산합니다.${x.unknown?' 생시를 모르므로 시주는 제외했습니다.':''}`;
   renderLuck(luckCycles(mp,x.utcMs,yp,x.gender),dp.si);
   annualRows(dp.si,new Date().getFullYear());
   const warnings=[];
@@ -362,7 +397,9 @@ document.addEventListener('DOMContentLoaded',()=>{
        cal=document.getElementById('calendarType'),solarWrap=document.getElementById('solarDateWrap'),
        lunarWrap=document.getElementById('lunarDateWrap'),ly=document.getElementById('lunarYear'),
        lm=document.getElementById('lunarMonth'),ld=document.getElementById('lunarDay'),
-       leap=document.getElementById('leapMonth'),help=document.getElementById('lunarLeapHelp');
+       leap=document.getElementById('leapMonth'),help=document.getElementById('lunarLeapHelp'),
+       timeMode=document.getElementById('timeMode'),solarLocation=document.getElementById('solarLocationWrap'),
+       place=document.getElementById('birthPlace'),otherPlace=document.getElementById('otherPlaceWrap');
 
  for(let y=1900;y<=2050;y++){const o=document.createElement('option');o.value=y;o.textContent=y+'년';ly.appendChild(o)}
  ly.value=Math.min(new Date().getFullYear(),2050);
@@ -384,4 +421,13 @@ document.addEventListener('DOMContentLoaded',()=>{
    const lunar=cal.value==='lunar';solarWrap.classList.toggle('hide',lunar);lunarWrap.classList.toggle('hide',!lunar);
  });
  ly.addEventListener('change',refreshLunar);lm.addEventListener('change',refreshLunar);leap.addEventListener('change',refreshLunar);
+ function refreshSolarLocation(){
+   const useSolar=timeMode.value==='solar';
+   solarLocation.classList.toggle('hide',!useSolar);
+   if(!useSolar)otherPlace.classList.add('hide');
+   else otherPlace.classList.toggle('hide',place.value!=='기타 대한민국 지역');
+ }
+ timeMode.addEventListener('change',refreshSolarLocation);
+ place.addEventListener('change',refreshSolarLocation);
+ refreshSolarLocation();
 });

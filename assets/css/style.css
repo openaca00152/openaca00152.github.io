@@ -33,3 +33,7 @@
 .personal-section small{display:block;color:#64748b;background:#f8fafc;border-radius:9px;padding:8px 10px}
 @media(max-width:820px){.basic-grid{grid-template-columns:1fr}.span-2{grid-column:auto}}
 @media(max-width:520px){.lunar-fields{grid-template-columns:1fr}}
+
+.solar-location-wrap{margin:14px 0 4px;padding:16px;border-top:1px dashed #cbd5e1}
+.solar-location-wrap h3{margin:0 0 6px;font-size:17px}
+.notice.soft{background:#f8fafc;border-color:#dbe4ef;color:#475569}

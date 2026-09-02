@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://openaca00152.github.io/sitemap.xml
-Sitemap: https://openaca00152.github.io/sitemap.txt
