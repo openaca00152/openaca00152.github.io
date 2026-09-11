@@ -26,7 +26,7 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();__installPr
 window.addEventListener('appinstalled',()=>{__installPrompt=null;document.querySelectorAll('.install-header-btn,[data-install-app]').forEach(x=>x.classList.add('hide'))});
 
 (function loadVisualTheme(){
- const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/weekday-theme.css?v=20260911-rainbow1';document.head.appendChild(l);
+ const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/weekday-theme.css?v=20260911-mascot1';document.head.appendChild(l);
  if(location.pathname==='/tools/daily-fortune.html'){const d=document.createElement('link');d.rel='stylesheet';d.href='/assets/css/daily-fortune.css?v=20260911-daily1';document.head.appendChild(d)}
 })();
 
@@ -50,10 +50,30 @@ function applyWeekdayTheme(){
  const meta=document.querySelector('meta[name="theme-color"]');
  const css=getComputedStyle(document.body).getPropertyValue('--day-accent-deep').trim();if(meta&&css)meta.setAttribute('content',css);
 }
+function mascotMessage(){
+ const day=new Date().getDay();
+ const messages=['오늘은 마음에도 여백을 주세요.','월요일, 작은 시작이면 충분해요.','한 걸음씩 가도 잘 가고 있어요.','오늘의 균형을 찾아볼까요?','맑은 마음으로 하나씩 해봐요.','이번 주의 수고를 토닥토닥.','느긋하게 나를 챙기는 하루예요.'];
+ return messages[day];
+}
+function injectMascot(){
+ if(document.querySelector('.mascot-buddy'))return;
+ const buddy=document.createElement('aside');buddy.className='mascot-buddy';buddy.setAttribute('aria-label','별복이의 오늘 응원');
+ buddy.innerHTML=`<div class="mascot-bubble"><strong>🍀 별복이의 한마디</strong><span>${mascotMessage()}</span></div><img src="/assets/icons/mascot-byeolbok.svg" alt="네잎클로버를 든 부엉이 마스코트 별복이"><button class="mascot-close" type="button" aria-label="별복이 닫기">×</button>`;
+ document.body.appendChild(buddy);
+ buddy.querySelector('.mascot-close').addEventListener('click',()=>buddy.remove());
+}
+window.updateByeolbok=function(score,name){
+ const buddy=document.querySelector('.mascot-buddy');if(!buddy)return;
+ const bubble=buddy.querySelector('.mascot-bubble span');const who=name?`${name}님, `:'';
+ buddy.classList.remove('mood-great','mood-calm','mood-care');
+ if(score>=78){buddy.classList.add('mood-great');bubble.textContent=`${who}오늘의 좋은 흐름을 한 가지 행동으로 남겨봐요!`;}
+ else if(score>=64){buddy.classList.add('mood-calm');bubble.textContent=`${who}서두르지 말고 중요한 것부터 하나씩 해봐요.`;}
+ else{buddy.classList.add('mood-care');bubble.textContent=`${who}오늘은 무리하지 않는 것도 좋은 선택이에요.`;}
+};
 
 document.addEventListener('DOMContentLoaded',()=>{
  applyWeekdayTheme();
  const b=document.querySelector('.menu-btn'),n=document.querySelector('.nav-links');if(b&&n)b.addEventListener('click',()=>n.classList.toggle('open'));
- document.querySelectorAll('[data-year]').forEach(x=>x.textContent=new Date().getFullYear());injectInstallUI();
+ document.querySelectorAll('[data-year]').forEach(x=>x.textContent=new Date().getFullYear());injectInstallUI();injectMascot();
 });
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
