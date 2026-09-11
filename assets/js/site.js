@@ -18,14 +18,13 @@ function injectInstallUI(){
 function showInstallHelp(html){const m=document.getElementById('installModal');document.getElementById('installHelp').innerHTML=html;m.classList.remove('hide')}
 async function installApp(){
  if(isStandalone()){alert('이미 홈 화면 앱으로 실행 중입니다.');return}
- if(__installPrompt){
-   __installPrompt.prompt();const r=await __installPrompt.userChoice;if(r.outcome==='accepted')__installPrompt=null;return;
- }
+ if(__installPrompt){__installPrompt.prompt();const r=await __installPrompt.userChoice;if(r.outcome==='accepted')__installPrompt=null;return;}
  if(isiOS())showInstallHelp('<p><strong>iPhone / iPad</strong></p><p>가장 확실한 방법은 <b>Safari에서 이 사이트를 여는 것</b>입니다. Chrome에서 보고 있다면 Safari로 주소를 열어주세요.</p><ol><li>Safari의 <b>공유</b> 버튼을 누릅니다.</li><li><b>홈 화면에 추가</b>를 선택합니다.</li><li>오른쪽 위 <b>추가</b>를 누릅니다.</li></ol>');
  else showInstallHelp('<p><strong>Chrome / Edge / Android</strong></p><p>브라우저 메뉴의 <b>앱 설치</b> 또는 <b>홈 화면에 추가</b>를 선택하세요. 설치 조건이 충족되면 이 버튼에서 설치 창이 바로 열립니다.</p>');
 }
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();__installPrompt=e});
 window.addEventListener('appinstalled',()=>{__installPrompt=null;document.querySelectorAll('.install-header-btn,[data-install-app]').forEach(x=>x.classList.add('hide'))});
+if(location.pathname==='/tools/daily-fortune.html'){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/daily-fortune.css?v=20260911-daily1';document.head.appendChild(l)}
 document.addEventListener('DOMContentLoaded',()=>{
  const b=document.querySelector('.menu-btn'),n=document.querySelector('.nav-links');if(b&&n)b.addEventListener('click',()=>n.classList.toggle('open'));
  document.querySelectorAll('[data-year]').forEach(x=>x.textContent=new Date().getFullYear());injectInstallUI();
