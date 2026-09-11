@@ -24,8 +24,35 @@ async function installApp(){
 }
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();__installPrompt=e});
 window.addEventListener('appinstalled',()=>{__installPrompt=null;document.querySelectorAll('.install-header-btn,[data-install-app]').forEach(x=>x.classList.add('hide'))});
-if(location.pathname==='/tools/daily-fortune.html'){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/daily-fortune.css?v=20260911-daily1';document.head.appendChild(l)}
+
+(function loadVisualTheme(){
+ const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/weekday-theme.css?v=20260911-rainbow1';document.head.appendChild(l);
+ if(location.pathname==='/tools/daily-fortune.html'){const d=document.createElement('link');d.rel='stylesheet';d.href='/assets/css/daily-fortune.css?v=20260911-daily1';document.head.appendChild(d)}
+})();
+
+const WEEKDAY_THEMES=[
+ {cls:'theme-sun',name:'일요일',label:'코랄 레드'},
+ {cls:'theme-mon',name:'월요일',label:'포근한 오렌지'},
+ {cls:'theme-tue',name:'화요일',label:'햇살 옐로'},
+ {cls:'theme-wed',name:'수요일',label:'새싹 그린'},
+ {cls:'theme-thu',name:'목요일',label:'맑은 블루'},
+ {cls:'theme-fri',name:'금요일',label:'라일락 인디고'},
+ {cls:'theme-sat',name:'토요일',label:'포근한 바이올렛'}
+];
+function applyWeekdayTheme(){
+ const theme=WEEKDAY_THEMES[new Date().getDay()];
+ document.body.classList.add(theme.cls);
+ document.documentElement.dataset.weekdayTheme=theme.cls;
+ const host=document.querySelector('.hero .kicker,.daily-hero .kicker');
+ if(host&&!document.querySelector('.day-theme-chip')){
+   const chip=document.createElement('span');chip.className='day-theme-chip';chip.innerHTML=`<i></i>${theme.name} · ${theme.label}`;host.insertAdjacentElement('afterend',chip);
+ }
+ const meta=document.querySelector('meta[name="theme-color"]');
+ const css=getComputedStyle(document.body).getPropertyValue('--day-accent-deep').trim();if(meta&&css)meta.setAttribute('content',css);
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
+ applyWeekdayTheme();
  const b=document.querySelector('.menu-btn'),n=document.querySelector('.nav-links');if(b&&n)b.addEventListener('click',()=>n.classList.toggle('open'));
  document.querySelectorAll('[data-year]').forEach(x=>x.textContent=new Date().getFullYear());injectInstallUI();
 });
